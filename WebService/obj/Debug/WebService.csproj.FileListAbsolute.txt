@@ -1,0 +1,6 @@
+C:\Users\Matheus\Documents\GitHub\HolterMobile\WebService\bin\Debug\WebService.dll.config
+C:\Users\Matheus\Documents\GitHub\HolterMobile\WebService\bin\Debug\WebService.dll
+C:\Users\Matheus\Documents\GitHub\HolterMobile\WebService\bin\Debug\WebService.pdb
+C:\Users\Matheus\Documents\GitHub\HolterMobile\WebService\obj\Debug\WebService.csprojResolveAssemblyReference.cache
+C:\Users\Matheus\Documents\GitHub\HolterMobile\WebService\obj\Debug\WebService.dll
+C:\Users\Matheus\Documents\GitHub\HolterMobile\WebService\obj\Debug\WebService.pdb

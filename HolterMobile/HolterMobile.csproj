@@ -199,7 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Teste\TesteController.cs" />
-    <Compile Include="DAO\HolterMobileDB.cs" />
+    <Compile Include="DB\HolterMobileDB.cs" />
     <Compile Include="DAO\LoginDao.cs" />
     <Compile Include="DAO\PerfilDao.cs" />
     <Compile Include="DAO\UsuarioDao.cs" />
