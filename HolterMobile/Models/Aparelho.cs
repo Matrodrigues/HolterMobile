@@ -7,11 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HolterMobile.Models
 {
-    [Table("TB_PERFIL")]
-    public class Perfil
+    [Table("TB_APARELHO")]
+    public class Aparelho
     {
         [Key]
-        public int id_perfil { get; set; }
-        public string ds_perfil { get; set; }
+        public int id_aparelho { get; set; }
+        public string modelo { get; set; }
     }
 }

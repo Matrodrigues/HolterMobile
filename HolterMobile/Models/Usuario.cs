@@ -13,5 +13,9 @@ namespace HolterMobile.Models
         [Key]
         public int id_usuario { get; set; }
         public string nome { get; set; }
+        public string sobrenome { get; set; }
+        public char sexo { get; set; }
+        public DateTime idade { get; set; }
+
     }
 }
