@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Holter Mobile</title>
+    <!-- Bootstrap -->
+    <link href="~/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Content/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/Content/build/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form>
+                        <h1>Login</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Email" required="" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Senha" required="" />
+                        </div>
+                        <select class="form-control">
+                            <option>Médico</option>
+                            <option>Paciente</option>
+                            <option>Responsável</option>
+                        </select>
+                        <div>
+                            <a class="btn btn-default submit" href="relatorios.html">Logar</a>
+                            <a class="reset_pass" href="#">Esqueceu sua senha?</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><i class="fa fa-plus-square" style="font-size: 26px;"></i> Holter Mobile</h1>
+                                <p>© Copyright 2016 - Powered By UNIFIEO - Todos os direitos reservados.</p>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- form -->
+                </section>
+                <!-- content -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
