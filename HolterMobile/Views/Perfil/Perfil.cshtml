@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="title-left">
+    <a href="#">Perfil</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="perfil.html">Editar Perfil</a>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Perfil</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width:24px;">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <label class="control-label col-md-1 col-sm-1 col-xs-12" for="nome">
+                            Nome<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="nome" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1 col-sm-1 col-xs-12" for="sobrenome">
+                            Sobrenome<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="sobrenome" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1 col-sm-1 col-xs-12">Sexo*</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div style="margin-top:10px;">
+                                Masculino: <input type="radio" class="flat" name="sexo" id="sexoM" value="M" checked="" required />
+                                Feminino: <input type="radio" class="flat" name="sexo" id="sexoF" value="F" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1 col-sm-1 col-xs-12">
+                            Nascimento<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="nascimento" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <button type="submit" class="btn btn-primary">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

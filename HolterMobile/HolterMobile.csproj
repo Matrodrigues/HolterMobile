@@ -198,6 +198,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Login\LoginController.cs" />
+    <Compile Include="Controllers\Perfil\PerfilController.cs" />
+    <Compile Include="Controllers\Perfil\ResponsaveisController.cs" />
     <Compile Include="Controllers\Relatorio\RelatorioController.cs" />
     <Compile Include="Controllers\Teste\TesteController.cs" />
     <Compile Include="DAO\AparelhoDao.cs" />
@@ -3630,6 +3632,8 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_Menus.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
+    <Content Include="Views\Perfil\Perfil.cshtml" />
+    <Content Include="Views\Responsaveis\Responsaveis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
