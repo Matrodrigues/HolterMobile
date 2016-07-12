@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HolterMobile.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace HolterMobile.Controllers.Perfil
     public class PerfilController : Controller
     {
         // GET: Perfil
+        [CustomAuthorize]
         public ActionResult Perfil()
         {
             return View();

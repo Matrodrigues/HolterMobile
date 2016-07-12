@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using HolterMobile.Enum;
 
-namespace HolterMobile.ViewModel
+namespace HolterMobile.Models.ViewModel
 {
     public class BaseVM
     {
-        private string nome { get; set; }
-        private EnumPerfil perfil { get; set; }
+        protected string nome { get; set; }
+        protected EnumPerfil perfil { get; set; }
     }
 }

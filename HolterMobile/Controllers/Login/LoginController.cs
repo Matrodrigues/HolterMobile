@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HolterMobile.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,13 @@ namespace HolterMobile.Controllers.Login
         // GET: Login
         public ActionResult Login()
         {
+            return View(new LoginVM());
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginVM dados)
+        {
+
             return View();
         }
     }

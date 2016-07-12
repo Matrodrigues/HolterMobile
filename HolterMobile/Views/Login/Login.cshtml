@@ -1,4 +1,5 @@
-﻿
+﻿@model HolterMobile.Models.ViewModel.LoginVM
+
 @{
     ViewBag.Title = "Login";
     Layout = null;
@@ -29,21 +30,18 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
-                    <form>
+                    @using (Html.BeginForm("Login", "Login")) {
+                        @Html.ValidationSummary(true)
                         <h1>Login</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Email" required="" />
+                            @Html.TextBoxFor(model => model.usuario, new { @class = "form-control" })
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Senha" required="" />
+                            @Html.PasswordFor(model => model.senha, new { @class = "form-control" })
                         </div>
-                        <select class="form-control">
-                            <option>Médico</option>
-                            <option>Paciente</option>
-                            <option>Responsável</option>
-                        </select>
+                            @Html.DropDownListFor(model => model.area, Model.AreaList, new { @class = "form-control" })
                         <div>
-                            <a class="btn btn-default submit" href="relatorios.html">Logar</a>
+                            <button type="submit" class="btn btn-default submit">Login</button>
                             <a class="reset_pass" href="#">Esqueceu sua senha?</a>
                         </div>
                         <div class="clearfix"></div>
@@ -55,7 +53,7 @@
                                 <p>© Copyright 2016 - Powered By UNIFIEO - Todos os direitos reservados.</p>
                             </div>
                         </div>
-                    </form>
+                    }
                     <!-- form -->
                 </section>
                 <!-- content -->
