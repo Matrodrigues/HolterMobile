@@ -30,16 +30,17 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
-                    @using (Html.BeginForm("Login", "Login")) {
+                    @using (Html.BeginForm("Login", "Login"))
+                    {
                         @Html.ValidationSummary(true)
                         <h1>Login</h1>
                         <div>
-                            @Html.TextBoxFor(model => model.usuario, new { @class = "form-control" })
+                            @Html.TextBoxFor(model => model.usuario, new { @class = "form-control" }) @Html.ValidationMessage("usuario")
                         </div>
                         <div>
-                            @Html.PasswordFor(model => model.senha, new { @class = "form-control" })
+                            @Html.PasswordFor(model => model.senha, new { @class = "form-control" }) @Html.ValidationMessage("senha")
                         </div>
-                            @Html.DropDownListFor(model => model.area, Model.AreaList, new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.area, Model.AreaList, new { @class = "form-control" })
                         <div>
                             <button type="submit" class="btn btn-default submit">Login</button>
                             <a class="reset_pass" href="#">Esqueceu sua senha?</a>
@@ -59,6 +60,39 @@
                 <!-- content -->
             </div>
         </div>
+        <div id="modal" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Ops...</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Erro ao efetuar login</h4>
+                        <p>O usuário e a senha que você digitou não coincidem.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- jQuery -->
+    <script src="~/Content/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            if (window.location.hash == '#InvalidUser') {
+                $('#modal').modal();
+            }
+        });
+    </script>
+
 </body>
 </html>

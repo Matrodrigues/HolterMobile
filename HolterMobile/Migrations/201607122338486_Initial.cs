@@ -3,7 +3,7 @@ namespace HolterMobile.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -38,7 +38,7 @@ namespace HolterMobile.Migrations
                         id_usuario = c.Int(nullable: false, identity: true),
                         nome = c.String(),
                         sobrenome = c.String(),
-                        idade = c.DateTime(nullable: false),
+                        dt_nasc = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id_usuario);
             
@@ -73,6 +73,8 @@ namespace HolterMobile.Migrations
                         id_login = c.Int(nullable: false, identity: true),
                         id_usuario = c.Int(nullable: false),
                         id_perfil = c.Int(nullable: false),
+                        ds_username = c.String(),
+                        ds_senha = c.String(),
                     })
                 .PrimaryKey(t => t.id_login)
                 .ForeignKey("dbo.TB_PERFIL", t => t.id_perfil, cascadeDelete: true)

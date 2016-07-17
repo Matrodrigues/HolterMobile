@@ -15,7 +15,7 @@ namespace HolterMobile.Models
         public string nome { get; set; }
         public string sobrenome { get; set; }
         public char sexo { get; set; }
-        public DateTime idade { get; set; }
+        public DateTime dt_nasc { get; set; }
 
     }
 }

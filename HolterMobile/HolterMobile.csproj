@@ -213,12 +213,13 @@
     <Compile Include="DAO\PerfilDao.cs" />
     <Compile Include="DAO\UsuarioDao.cs" />
     <Compile Include="Enum\EnumPerfil.cs" />
+    <Compile Include="Facade\LoginFacade.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201607020126052_InitialCreate.cs" />
-    <Compile Include="Migrations\201607020126052_InitialCreate.Designer.cs">
-      <DependentUpon>201607020126052_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201607122338486_Initial.cs" />
+    <Compile Include="Migrations\201607122338486_Initial.Designer.cs">
+      <DependentUpon>201607122338486_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aparelho.cs" />
@@ -3652,8 +3653,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607020126052_InitialCreate.resx">
-      <DependentUpon>201607020126052_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607122338486_Initial.resx">
+      <DependentUpon>201607122338486_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

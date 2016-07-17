@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HolterMobile.DAO;
+using HolterMobile.Models;
+using HolterMobile.Facade;
 
 namespace HolterMobile.Controllers.Login
 {
@@ -18,8 +21,19 @@ namespace HolterMobile.Controllers.Login
         [HttpPost]
         public ActionResult Login(LoginVM dados)
         {
+            if (ModelState.IsValid)
+            {
+                LoginFacade facade = new LoginFacade();
 
-            return View();
+                int logged = facade.IsValid(dados);
+
+                if (logged == 0)
+                    return Redirect("/Login/Login#InvalidUser");
+                else
+                    return Redirect("/Relatorio/Relatorio");
+            }           
+
+            return View("Login", dados);
         }
     }
 }

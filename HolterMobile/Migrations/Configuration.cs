@@ -9,8 +9,7 @@ namespace HolterMobile.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "HolterMobile.DB.HolterMobileDB";
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(HolterMobile.DB.HolterMobileDB context)

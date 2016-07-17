@@ -1,4 +1,5 @@
-﻿using HolterMobile.Models;
+﻿using HolterMobile.DB;
+using HolterMobile.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,16 @@ namespace HolterMobile.DAO
         //    HolterMobileDB db = new HolterMobileDB();
         //    return db.login.ToList();
         //}
+
+        public Login GetLogin(string usuario, string senha, int area)
+        {
+            Login login = new Login();
+
+            HolterMobileDB db = new HolterMobileDB();
+
+            login = db.login.Where(x => x.ds_username == usuario && x.ds_senha == senha && x.id_perfil == area).FirstOrDefault();
+
+            return login;
+        }
     }
 }

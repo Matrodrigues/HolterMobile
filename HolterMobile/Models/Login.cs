@@ -20,5 +20,9 @@ namespace HolterMobile.Models
         public int id_perfil { get; set; }
         [ForeignKey("id_perfil")]
         public Perfil perfil { get; set; }
+
+        public string ds_username { get; set; }
+
+        public string ds_senha { get; set; }
     }
 }

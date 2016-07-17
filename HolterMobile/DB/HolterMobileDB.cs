@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using HolterMobile.Models;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Core.Objects;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace HolterMobile.DB
 {
@@ -16,7 +20,6 @@ namespace HolterMobile.DB
         public DbSet<LogAcesso> logAcesso { get; set; }
         public DbSet<Aparelho> aparelho { get; set; }
         public DbSet<Monitoramento> monitoramento { get; set; }
-
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
