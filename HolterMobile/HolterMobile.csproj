@@ -199,6 +199,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Login\LoginController.cs" />
+    <Compile Include="Controllers\Medico\MedicoController.cs" />
+    <Compile Include="Controllers\Medico\PacienteController.cs" />
     <Compile Include="Controllers\Perfil\PerfilController.cs" />
     <Compile Include="Controllers\Perfil\ResponsaveisController.cs" />
     <Compile Include="Controllers\Relatorio\RelatorioController.cs" />
@@ -3644,6 +3646,7 @@
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
     <Content Include="Views\Perfil\Perfil.cshtml" />
     <Content Include="Views\Responsaveis\Responsaveis.cshtml" />
+    <Content Include="Views\Medico\Paciente\Cadastrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
