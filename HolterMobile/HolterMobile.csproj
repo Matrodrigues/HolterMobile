@@ -232,6 +232,7 @@
     <Compile Include="Models\Monitoramento.cs" />
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\ViewModel\CadastrarPacienteVM.cs" />
     <Compile Include="Models\ViewModel\DropDown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
