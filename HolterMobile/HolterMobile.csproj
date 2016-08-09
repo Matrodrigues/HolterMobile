@@ -199,8 +199,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Login\LoginController.cs" />
-    <Compile Include="Controllers\Medico\MedicoController.cs" />
     <Compile Include="Controllers\Medico\PacienteController.cs" />
+    <Compile Include="Controllers\Medico\PerfilController.cs" />
     <Compile Include="Controllers\Perfil\PerfilController.cs" />
     <Compile Include="Controllers\Perfil\ResponsaveisController.cs" />
     <Compile Include="Controllers\Relatorio\RelatorioController.cs" />
@@ -218,10 +218,6 @@
     <Compile Include="Facade\LoginFacade.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201607122338486_Initial.cs" />
-    <Compile Include="Migrations\201607122338486_Initial.Designer.cs">
-      <DependentUpon>201607122338486_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aparelho.cs" />
@@ -3648,6 +3644,7 @@
     <Content Include="Views\Perfil\Perfil.cshtml" />
     <Content Include="Views\Responsaveis\Responsaveis.cshtml" />
     <Content Include="Views\Medico\Paciente\Cadastrar.cshtml" />
+    <Content Include="Views\Medico\Perfil\Atualizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
@@ -3655,11 +3652,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201607122338486_Initial.resx">
-      <DependentUpon>201607122338486_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

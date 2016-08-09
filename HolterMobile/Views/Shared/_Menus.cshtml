@@ -24,14 +24,14 @@
                     <li>
                         <a><i class="fa fa-user"></i> Perfil <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            <li><a href="perfil.html">Editar perfil</a></li>
-                            <li><a href="responsaveis.html">Responsáveis</a></li>
+                            <li>@Html.ActionLink("Editar", "Alterar", "Perfil", null)</li>
                         </ul>
                     </li>
                     <li>
-                        <a><i class="fa fa-bar-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+                        <a><i class="fa fa-bar-chart"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            <li><a href="relatorios.html">Consultar</a></li>
+                            <li>@Html.ActionLink("Listar", "Listar", "Paciente", null)</li>
+                            <li>@Html.ActionLink("Cadastrar", "Cadastrar", "Paciente", null)</li>
                         </ul>
                     </li>
                 </ul>

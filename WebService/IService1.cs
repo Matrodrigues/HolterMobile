@@ -12,7 +12,7 @@ namespace WebService
     public interface IService1
     {
         [OperationContract]
-        string GetData(int value);
+        Person GetData(string id);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

@@ -16,6 +16,10 @@ namespace HolterMobile.Models
         public string sobrenome { get; set; }
         public char sexo { get; set; }
         public DateTime dt_nasc { get; set; }
+        public int bpm_min { get; set; }
+        public int bpm_max { get; set; }
+        public double altura { get; set; }
+        public double peso { get; set; }
 
     }
 }
