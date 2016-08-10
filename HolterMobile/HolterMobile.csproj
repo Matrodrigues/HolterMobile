@@ -219,6 +219,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ValidDouble.cs" />
+    <Compile Include="Helpers\ValidInteger.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aparelho.cs" />
     <Compile Include="Models\DadoMonitorado.cs" />
@@ -3641,10 +3643,10 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Shared\_Menus.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
-    <Content Include="Views\Perfil\Perfil.cshtml" />
     <Content Include="Views\Responsaveis\Responsaveis.cshtml" />
     <Content Include="Views\Medico\Paciente\Cadastrar.cshtml" />
     <Content Include="Views\Medico\Perfil\Atualizar.cshtml" />
+    <Content Include="Views\Medico\Paciente\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />

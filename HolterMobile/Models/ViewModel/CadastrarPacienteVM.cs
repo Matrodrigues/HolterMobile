@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HolterMobile.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,5 +22,21 @@ namespace HolterMobile.Models.ViewModel
         [DataType(DataType.Date, ErrorMessage = "Data inválida")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? dataNascto { get; set; }
+
+        [Required(ErrorMessage = "Favor inserir o peso.")]
+        [ValidDouble(ErrorMessage = "Peso inválida")]
+        public double peso { get; set; }
+
+        [Required(ErrorMessage = "Favor inserir o peso.")]
+        [ValidDouble(ErrorMessage = "Altura inválida")]
+        public double altura { get; set; }
+
+        [Required(ErrorMessage = "Favor inserir o batimento mínimo aceitável.")]
+        [ValidInteger(ErrorMessage = "BPM mínimo inválido")]
+        public int bpm_min { get; set; }
+
+        [Required(ErrorMessage = "Favor inserir o batimento máximo aceitável.")]
+        [ValidInteger(ErrorMessage = "BPM máximo inválido")]
+        public int bpm_max { get; set; }
     }
 }
