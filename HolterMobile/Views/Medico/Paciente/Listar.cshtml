@@ -1,8 +1,49 @@
-﻿
+﻿@model HolterMobile.Models.ViewModel.ListaUsuarioVM
 @{
     ViewBag.Title = "Listar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listar</h2>
+<div class="title-left">
+    <a href="#">Paciente</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="perfil.html">Cadastrar Paciente</a>
+</div>
+<br />
 
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Lista de Pacientes</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width:24px;">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var u in Model.usuarios)
+                        {
+                            <tr>
+                                <th scope="row">@u.id_usuario</th>
+                                <td>@u.nome</td>
+                                <td>@u.sobrenome</td>
+                            </tr>
+                        }                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

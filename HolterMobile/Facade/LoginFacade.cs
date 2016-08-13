@@ -20,7 +20,7 @@ namespace HolterMobile.Facade
             if (l != null)
             {
                 FormsAuthentication.SetAuthCookie(l.ds_username, true);
-                return 1;
+                return l.id_usuario;
             }
 
             return 0;            

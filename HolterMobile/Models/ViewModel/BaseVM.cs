@@ -8,7 +8,8 @@ namespace HolterMobile.Models.ViewModel
 {
     public class BaseVM
     {
-        protected string nome { get; set; }
-        protected EnumPerfil perfil { get; set; }
+        public string nome { get; set; }
+        public int idLogado { get; set; }
+        public EnumPerfil perfil { get; set; }
     }
 }

@@ -21,6 +21,8 @@ namespace HolterMobile.Controllers.Login
         [HttpPost]
         public ActionResult Login(LoginVM dados)
         {
+            Session["MedicoId"] = null;
+
             if (ModelState.IsValid)
             {
                 LoginFacade facade = new LoginFacade();
@@ -30,7 +32,10 @@ namespace HolterMobile.Controllers.Login
                 if (logged == 0)
                     return Redirect("/Login/Login#InvalidUser");
                 else
+                {
+                    Session["MedicoId"] = logged;
                     return Redirect("/Relatorio/Relatorio");
+                }
             }           
 
             return View("Login", dados);

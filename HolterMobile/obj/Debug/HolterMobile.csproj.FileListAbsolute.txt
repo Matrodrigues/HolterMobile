@@ -162,3 +162,5 @@ C:\Users\Matheus\Documents\GitHub\HolterMobile\HolterMobile\bin\Microsoft.Owin.S
 C:\Users\Matheus\Documents\GitHub\HolterMobile\HolterMobile\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Matheus\Documents\GitHub\HolterMobile\HolterMobile\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Matheus\Documents\GitHub\HolterMobile\HolterMobile\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Matheus\Documents\GitHub\HolterMobile\HolterMobile\obj\Debug\HolterMobile.Migrations.Initial.resources
+C:\Users\Matheus\Documents\GitHub\HolterMobile\HolterMobile\obj\Debug\HolterMobile.csproj.GenerateResource.Cache

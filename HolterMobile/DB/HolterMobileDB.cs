@@ -20,13 +20,13 @@ namespace HolterMobile.DB
         public DbSet<LogAcesso> logAcesso { get; set; }
         public DbSet<Aparelho> aparelho { get; set; }
         public DbSet<Monitoramento> monitoramento { get; set; }
+        public DbSet<PacienteMedico> pacienteMedico { get; set; }
+        public DbSet<Atividade> atividades { get; set; }
+        public DbSet<Responsaveis> responsaveis { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Perfil>().ToTable("TB_PERFIL");
-        //    //modelBuilder.Entity<Usuario>().ToTable("TB_USUARIO");
-        //    //modelBuilder.Entity<Login>().ToTable("TB_LOGIN");
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+  
+        }
     }
 }

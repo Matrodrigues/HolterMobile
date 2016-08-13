@@ -25,5 +25,42 @@ namespace HolterMobile.DAO
 
             return login;
         }
+
+        public bool Inserir(Login l)
+        {
+            try
+            {
+                HolterMobileDB db = new HolterMobileDB();
+
+                db.login.Add(l);
+
+                db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        
+        public bool TemDisponibilidade(string usuario)
+        {
+            try
+            {
+                HolterMobileDB db = new HolterMobileDB();
+
+                Login l = db.login.Where(x => x.ds_username == usuario).FirstOrDefault();
+
+                if (l == null)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

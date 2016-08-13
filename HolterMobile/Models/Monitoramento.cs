@@ -25,5 +25,16 @@ namespace HolterMobile.Models
         [ForeignKey("id_aparelho")]
         public Aparelho aparelho { get; set; }
 
+        public int bpm { get; set; }
+        public DateTime horario { get; set; }
+
+        public int id_atividade { get; set; }
+        [ForeignKey("id_atividade")]
+        public Atividade atividade { get; set; }
+
+        public string latitude { get; set; }
+
+        public string longitude { get; set; }
+
     }
 }

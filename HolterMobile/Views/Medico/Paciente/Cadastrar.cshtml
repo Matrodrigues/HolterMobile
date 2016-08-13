@@ -51,7 +51,7 @@
                             Sexo <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-6 col-xs-12">
-                            Masculino @Html.RadioButtonFor(model => model.sexo, "M", new { @class = "flat" })
+                            Masculino @Html.RadioButtonFor(model => model.sexo, "M", new { @class = "flat", @checked = true })
                             Feminino @Html.RadioButtonFor(model => model.sexo, "F", new { @class = "flat" })
                             @Html.ValidationMessage("sexo")
                         </div>
@@ -102,6 +102,24 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Usuário <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.usuario, new { @class = "form-control" }) @Html.ValidationMessage("usuario")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Senha <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            @Html.PasswordFor(model => model.senha, new { @class = "form-control" }) @Html.ValidationMessage("senha")
+                        </div>
+                    </div>
+
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -114,6 +132,40 @@
         </div>
     </div>
 </div>
+
+<div id="modal" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Paciente cadastrado com sucesso!</h4>
+                <p>Você pode acompanhar seu paciente de forma remota.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Listar", "Paciente")'">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+<!-- jQuery -->
+<script src="~/Content/vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="~/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+        $(window).load(function () {
+            if (window.location.hash == '#Sucesso') {
+                $('#modal').modal();
+            }
+        });
+</script>
 
 <!-- bootstrap-daterangepicker -->
 <script>

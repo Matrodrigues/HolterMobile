@@ -38,5 +38,11 @@ namespace HolterMobile.Models.ViewModel
         [Required(ErrorMessage = "Favor inserir o batimento máximo aceitável.")]
         [ValidInteger(ErrorMessage = "BPM máximo inválido")]
         public int bpm_max { get; set; }
+
+        [Required(ErrorMessage = "Favor inserir um nomé de usuário para acesso ao sistema.")]
+        public string usuario { get; set; }
+
+        [Required(ErrorMessage = "Favor inserir uma senha para acesso ao sistema.")]
+        public string senha { get; set; }
     }
 }

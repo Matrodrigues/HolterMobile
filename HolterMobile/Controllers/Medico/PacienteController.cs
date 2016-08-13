@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HolterMobile.Models.ViewModel;
+using HolterMobile.Facade;
 
 namespace HolterMobile.Controllers.Medico
 {
@@ -20,7 +21,12 @@ namespace HolterMobile.Controllers.Medico
         {
             if (ModelState.IsValid)
             {
+                PacienteFacade facade = new PacienteFacade();
+                dados.idLogado = Convert.ToInt32(Session["MedicoId"]);
 
+                facade.CadastrarPaciente(dados);
+
+                return Redirect("/Medico/Paciente/Cadastrar#Sucesso");
             }
 
             return View("~/Views/Medico/Paciente/Cadastrar.cshtml", dados);
@@ -28,7 +34,14 @@ namespace HolterMobile.Controllers.Medico
 
         public ActionResult Listar()
         {
-            return View("~/Views/Medico/Paciente/Listar.cshtml");
+            PacienteFacade facade = new PacienteFacade();
+
+            int medicoId = Convert.ToInt32(Session["MedicoId"]);
+
+            ListaUsuarioVM vm = facade.ListaPacientes(medicoId);
+
+            return View("~/Views/Medico/Paciente/Listar.cshtml", vm);
         }
+
     }
 }
