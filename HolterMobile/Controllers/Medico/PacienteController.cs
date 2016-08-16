@@ -43,5 +43,21 @@ namespace HolterMobile.Controllers.Medico
             return View("~/Views/Medico/Paciente/Listar.cshtml", vm);
         }
 
+        public ActionResult Alterar(int idPaciente)
+        {
+
+            CadastrarPacienteVM vm = new CadastrarPacienteVM();
+
+
+
+            return View("~/Views/Medico/Paciente/Alterar.cshtml", vm);
+        }
+
+        public ActionResult Chat(int IdPaciente)
+        {
+
+            return View("~/Views/Medico/Paciente/Chat.cshtml");
+        }
+
     }
 }

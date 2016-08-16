@@ -230,6 +230,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aparelho.cs" />
     <Compile Include="Models\Atividade.cs" />
+    <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\DadoMonitorado.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\LogAcesso.cs" />
@@ -3657,6 +3658,8 @@
     <Content Include="Views\Medico\Paciente\Cadastrar.cshtml" />
     <Content Include="Views\Medico\Perfil\Atualizar.cshtml" />
     <Content Include="Views\Medico\Paciente\Listar.cshtml" />
+    <Content Include="Views\Medico\Paciente\Alterar.cshtml" />
+    <Content Include="Views\Medico\Paciente\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />

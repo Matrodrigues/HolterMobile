@@ -30,6 +30,7 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>Sobrenome</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,8 +40,19 @@
                                 <th scope="row">@u.id_usuario</th>
                                 <td>@u.nome</td>
                                 <td>@u.sobrenome</td>
+                                <td>
+                                    <a href="@Url.Action("Chat", null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                        <i class="fa fa-wechat"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                    <a href="@Url.Action("Alterar/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                        <i class="fa fa-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                    <a href="@Url.Action("Nome da Aciton", null, new { area = string.Empty, controller = "Nome do Controller" }, Request.Url.Scheme)">
+                                        <i class="fa fa-close"></i>
+                                    </a>
+                                </td>
                             </tr>
-                        }                        
+                        }
                     </tbody>
                 </table>
             </div>

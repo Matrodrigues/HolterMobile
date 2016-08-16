@@ -23,6 +23,7 @@ namespace HolterMobile.DB
         public DbSet<PacienteMedico> pacienteMedico { get; set; }
         public DbSet<Atividade> atividades { get; set; }
         public DbSet<Responsaveis> responsaveis { get; set; }
+        public DbSet<Chat> chat { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

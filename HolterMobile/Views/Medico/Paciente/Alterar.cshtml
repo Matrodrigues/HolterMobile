@@ -1,13 +1,13 @@
 ﻿@model HolterMobile.Models.ViewModel.CadastrarPacienteVM
 @{
-    ViewBag.Title = "Cadastrar";
+    ViewBag.Title = "Alterar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="title-left">
     <a href="#">Paciente</a>
     <i class="fa fa-angle-double-right"></i>
-    <a href="perfil.html">Cadastrar Paciente</a>
+    <a href="perfil.html">Alterar Paciente</a>
 </div>
 <br />
 
@@ -23,7 +23,7 @@
                 </ul>
                 <div class="clearfix"></div>
             </div>
-            @using (Html.BeginForm("Cadastrar", "Paciente", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+            @using (Html.BeginForm("Alterar", "Paciente", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
             {
                 @Html.ValidationSummary(true)
                 <div class="x_content">
@@ -124,7 +124,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <button type="submit" class="btn btn-primary">Cancelar</button>
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="submit" class="btn btn-success">Alterar</button>
                         </div>
                     </div>
                 </div>
@@ -140,11 +140,11 @@
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
+                <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
             </div>
             <div class="modal-body">
-                <h4>Paciente cadastrado com sucesso!</h4>
-                <p>Você pode acompanhar seu paciente de forma remota.</p>
+                <h4></h4>
+                <p>Tem certeza que deseja excluir o paciente?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Listar", "Paciente")'">Ok</button>
@@ -159,11 +159,11 @@
 <script src="~/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-        $(window).load(function () {
-            if (window.location.hash == '#Sucesso') {
-                $('#modal').modal();
-            }
-        });
+    $(window).load(function () {
+        if (window.location.hash == '#Sucesso') {
+            $('#modal').modal();
+        }
+    });
 </script>
 
 <!-- bootstrap-daterangepicker -->
@@ -183,7 +183,7 @@
 
 <!-- jquery.inputmask -->
 <script>
-      $(document).ready(function() {
+    $(document).ready(function () {
         $(":input").inputmask();
-      });
+    });
 </script>
