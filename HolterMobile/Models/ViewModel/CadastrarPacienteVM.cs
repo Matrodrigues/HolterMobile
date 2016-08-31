@@ -9,6 +9,8 @@ namespace HolterMobile.Models.ViewModel
 {
     public class CadastrarPacienteVM : BaseVM
     {
+        public int idPaciente { get; set; }
+
         [Required(ErrorMessage = "Favor inserir o nome")]
         public string primeiroNome { get; set; }
 

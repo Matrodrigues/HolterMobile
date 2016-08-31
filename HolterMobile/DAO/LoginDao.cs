@@ -1,5 +1,6 @@
 ﻿using HolterMobile.DB;
 using HolterMobile.Models;
+using HolterMobile.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,17 @@ namespace HolterMobile.DAO
             HolterMobileDB db = new HolterMobileDB();
 
             login = db.login.Where(x => x.ds_username == usuario && x.ds_senha == senha && x.id_perfil == area).FirstOrDefault();
+
+            return login;
+        }
+
+        public Login GetLogin(int idUsuario)
+        {
+            Login login = new Login();
+
+            HolterMobileDB db = new HolterMobileDB();
+
+            login = db.login.Where(x => x.id_usuario == idUsuario).FirstOrDefault();
 
             return login;
         }
@@ -56,6 +68,28 @@ namespace HolterMobile.DAO
                     return true;
                 else
                     return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool Alterar(CadastrarPacienteVM dados)
+        {
+            try
+            {
+                HolterMobileDB db = new HolterMobileDB();
+
+                Login login = db.login.Where(x => x.id_usuario == dados.idPaciente).FirstOrDefault();
+
+                login.id_perfil = 2; // Código paciente
+                login.ds_senha = dados.senha;
+                login.ds_username = dados.usuario;
+
+                db.SaveChanges();
+
+                return true;
             }
             catch (Exception ex)
             {

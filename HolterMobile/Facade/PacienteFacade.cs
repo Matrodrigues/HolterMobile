@@ -32,7 +32,7 @@ namespace HolterMobile.Facade
                 usuario.dt_nasc = Convert.ToDateTime(dados.dataNascto);
                 usuario.nome = dados.primeiroNome;
                 usuario.peso = dados.peso;
-                usuario.sexo = dados.sexo;
+                usuario.sexo = dados.sexo.ToString();
                 usuario.sobrenome = dados.sobrenome;
 
                 int idUsuario = usuarioDao.Inserir(usuario);
@@ -73,6 +73,53 @@ namespace HolterMobile.Facade
             vm.usuarios = dao.ListaPacientes(idMedico);
             
             return vm;
+        }
+
+        public CadastrarPacienteVM CarregaPaciente(int idUsuario)
+        {
+            CadastrarPacienteVM vm = new CadastrarPacienteVM();
+
+            LoginDao lDao = new LoginDao();
+            UsuarioDao uDao = new UsuarioDao();
+
+            Login l = lDao.GetLogin(idUsuario);
+
+            Usuario u = uDao.PegaUsuario(idUsuario);
+
+            vm.altura = u.altura;
+            vm.bpm_max = u.bpm_max;
+            vm.bpm_min = u.bpm_min;
+            vm.dataNascto = u.dt_nasc;
+            vm.nome = u.nome;
+            vm.peso = u.peso;
+            vm.primeiroNome = u.nome;
+            vm.senha = l.ds_senha;
+            vm.sexo = Char.Parse(u.sexo);
+            vm.sobrenome = u.sobrenome;
+            vm.usuario = l.ds_username;
+
+            return vm;
+        }
+
+        public bool AlterarPaciente(CadastrarPacienteVM dados)
+        {
+            try
+            {
+                UsuarioDao usuarioDao = new UsuarioDao();
+                LoginDao loginDao = new LoginDao();
+
+                if (!usuarioDao.Alterar(dados))
+                    throw new Exception("Erro ao alterar usuário");
+
+                if (!loginDao.Alterar(dados))
+                    throw new Exception("Erro ao alterar login");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

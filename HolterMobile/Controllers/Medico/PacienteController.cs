@@ -45,10 +45,27 @@ namespace HolterMobile.Controllers.Medico
 
         public ActionResult Alterar(int idPaciente)
         {
+            PacienteFacade facade = new PacienteFacade();            
 
             CadastrarPacienteVM vm = new CadastrarPacienteVM();
+            vm.idPaciente = idPaciente;
+            vm = facade.CarregaPaciente(idPaciente);
 
+            return View("~/Views/Medico/Paciente/Alterar.cshtml", vm);
+        }
 
+        [HttpPost]
+        public ActionResult Alterar(CadastrarPacienteVM vm)
+        {
+            if (ModelState.IsValid)
+            {
+                PacienteFacade facade = new PacienteFacade();
+                vm.idLogado = Convert.ToInt32(Session["MedicoId"]);
+
+                facade.AlterarPaciente(vm);
+
+                return Redirect("/Medico/Paciente/Alterar/" + vm.idPaciente +"#Sucesso");
+            }
 
             return View("~/Views/Medico/Paciente/Alterar.cshtml", vm);
         }

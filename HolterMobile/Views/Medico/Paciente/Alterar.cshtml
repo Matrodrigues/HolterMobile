@@ -51,7 +51,7 @@
                             Sexo <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-6 col-xs-12">
-                            Masculino @Html.RadioButtonFor(model => model.sexo, "M", new { @class = "flat", @checked = true })
+                            Masculino @Html.RadioButtonFor(model => model.sexo, "M", new { @class = "flat" })
                             Feminino @Html.RadioButtonFor(model => model.sexo, "F", new { @class = "flat" })
                             @Html.ValidationMessage("sexo")
                         </div>
@@ -116,7 +116,7 @@
                             Senha <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-6 col-xs-12">
-                            @Html.PasswordFor(model => model.senha, new { @class = "form-control" }) @Html.ValidationMessage("senha")
+                            @Html.PasswordFor(model => model.senha, new { value = Model.senha, @class = "form-control" }) @Html.ValidationMessage("senha")
                         </div>
                     </div>
 
@@ -140,11 +140,11 @@
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
+                <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
             </div>
             <div class="modal-body">
                 <h4></h4>
-                <p>Tem certeza que deseja excluir o paciente?</p>
+                <p>Paciente atualizado com sucesso!</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Listar", "Paciente")'">Ok</button>

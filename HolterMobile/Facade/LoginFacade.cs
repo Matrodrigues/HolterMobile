@@ -15,7 +15,7 @@ namespace HolterMobile.Facade
         {
             LoginDao dao = new LoginDao();
             Login l = new Login();
-            l = dao.GetLogin(login.usuario, login.senha, Convert.ToInt32(login.area));
+            l = dao.GetLogin(login.usuario, login.senha, 1);
 
             if (l != null)
             {

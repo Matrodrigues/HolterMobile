@@ -26,6 +26,18 @@ namespace HolterMobile.Migrations
                 .PrimaryKey(t => t.id_atividade);
             
             CreateTable(
+                "dbo.TB_CHAT",
+                c => new
+                    {
+                        id = c.Long(nullable: false, identity: true),
+                        id_usuario_emissor = c.Int(nullable: false),
+                        id_usuario_receptor = c.Int(nullable: false),
+                        horario = c.DateTime(nullable: false),
+                        mensagem = c.String(),
+                    })
+                .PrimaryKey(t => t.id);
+            
+            CreateTable(
                 "dbo.TB_ENDERECO",
                 c => new
                     {
@@ -47,6 +59,7 @@ namespace HolterMobile.Migrations
                         id_usuario = c.Int(nullable: false, identity: true),
                         nome = c.String(),
                         sobrenome = c.String(),
+                        sexo = c.String(maxLength: 1, fixedLength: true, unicode: false),
                         dt_nasc = c.DateTime(nullable: false),
                         bpm_min = c.Int(nullable: false),
                         bpm_max = c.Int(nullable: false),
@@ -169,6 +182,7 @@ namespace HolterMobile.Migrations
             DropTable("dbo.TB_LOG_ACESSO");
             DropTable("dbo.TB_USUARIO");
             DropTable("dbo.TB_ENDERECO");
+            DropTable("dbo.TB_CHAT");
             DropTable("dbo.TB_ATIVIDADES");
             DropTable("dbo.TB_APARELHO");
         }

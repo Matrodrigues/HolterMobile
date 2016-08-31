@@ -14,7 +14,11 @@ namespace HolterMobile.Models
         public int id_usuario { get; set; }
         public string nome { get; set; }
         public string sobrenome { get; set; }
-        public char sexo { get; set; }
+
+        [StringLength(1)]
+        [Column(TypeName = "char")]
+        public string sexo { get; set; }
+
         public DateTime dt_nasc { get; set; }
         public int bpm_min { get; set; }
         public int bpm_max { get; set; }
