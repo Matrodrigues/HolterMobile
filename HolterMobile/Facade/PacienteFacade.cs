@@ -121,5 +121,22 @@ namespace HolterMobile.Facade
                 return false;
             }
         }
+
+        public bool ExcluirPaciente(int idPaciente)
+        {
+            try
+            {
+                UsuarioDao uDao = new UsuarioDao();
+
+                if (!uDao.Excluir(idPaciente))
+                    throw new Exception("Erro ao deletar paciente");
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

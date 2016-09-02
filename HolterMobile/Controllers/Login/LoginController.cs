@@ -34,7 +34,7 @@ namespace HolterMobile.Controllers.Login
                 else
                 {
                     Session["MedicoId"] = logged;
-                    return Redirect("/Relatorio/Relatorio");
+                    return Redirect("/Medico/Paciente/Listar");
                 }
             }           
 

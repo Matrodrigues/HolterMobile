@@ -73,5 +73,24 @@ namespace HolterMobile.DAO
             }
            
         }
+
+        public bool Excluir(int idPaciente)
+        {
+            try
+            {
+                HolterMobileDB db = new HolterMobileDB();
+
+                Usuario u = db.usuario.Where(x => x.id_usuario == idPaciente).FirstOrDefault();
+
+                db.usuario.Remove(u);
+                db.SaveChanges();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

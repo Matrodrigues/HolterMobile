@@ -62,9 +62,10 @@ namespace HolterMobile.Controllers.Medico
                 PacienteFacade facade = new PacienteFacade();
                 vm.idLogado = Convert.ToInt32(Session["MedicoId"]);
 
-                facade.AlterarPaciente(vm);
-
-                return Redirect("/Medico/Paciente/Alterar/" + vm.idPaciente +"#Sucesso");
+                if(facade.AlterarPaciente(vm))
+                    return Redirect("/Medico/Paciente/Alterar/" + vm.idPaciente +"#Sucesso");
+                else
+                    return Redirect("/Medico/Paciente/Alterar/" + vm.idPaciente + "#Erro");
             }
 
             return View("~/Views/Medico/Paciente/Alterar.cshtml", vm);
@@ -74,6 +75,17 @@ namespace HolterMobile.Controllers.Medico
         {
 
             return View("~/Views/Medico/Paciente/Chat.cshtml");
+        }
+
+        [HttpGet]
+        public ActionResult Excluir(int idPaciente)
+        {
+            PacienteFacade facade = new PacienteFacade();
+
+            if (facade.ExcluirPaciente(idPaciente))
+                return Redirect("/Medico/Paciente/Listar/#ExcluidoSucesso");
+            else
+                return Redirect("/Medico/Paciente/Listar/#ExcluidoErro");
         }
 
     }

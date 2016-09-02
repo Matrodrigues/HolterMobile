@@ -14,8 +14,7 @@ namespace HolterMobile.Models.ViewModel
 
         [Required(ErrorMessage = "Insira uma senha")]
         public string senha { get; set; }
-
-        [Required]
+        
         public string area { get; set; }
 
         public IEnumerable<SelectListItem> AreaList

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HolterMobile.Facade;
+using HolterMobile.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +10,16 @@ namespace HolterMobile.Controllers.Medico
 {
     public class PerfilController : Controller
     {
-        // GET: Perfil
         public ActionResult Atualizar()
         {
-            return View("~/Views/Medico/Perfil/Atualizar.cshtml");
+            int medicoId = Convert.ToInt32(Session["MedicoId"]);
+
+            CadastrarPacienteVM vm = new CadastrarPacienteVM();
+            MedicoFacade facade = new MedicoFacade();
+
+            vm = facade.CarregaDadosMedico(medicoId);
+
+            return View("~/Views/Medico/Perfil/Atualizar.cshtml", vm);
         }
     }
 }
