@@ -21,5 +21,29 @@ namespace HolterMobile.Controllers.Medico
 
             return View("~/Views/Medico/Perfil/Atualizar.cshtml", vm);
         }
+
+        [HttpPost]
+        public ActionResult Alterar(CadastrarPacienteVM vm)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    MedicoFacade facade = new MedicoFacade();
+                    vm.idPaciente = Convert.ToInt32(Session["MedicoId"]);
+
+                    if (facade.Alterar(vm))
+                        return Redirect("/Medico/Perfil/Atualizar#Sucesso");
+                    else
+                        return Redirect("/Medico/Perfil/Atualizar#Erro");
+                }
+                else
+                    return View("~/Views/Medico/Perfil/Atualizar.cshtml", vm);
+            }
+            catch (Exception ex)
+            {
+                return Redirect("/Medico/Perfil/Atualizar#Erro");
+            }
+        }
     }
 }

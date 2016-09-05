@@ -97,6 +97,46 @@
     </div>
 </div>
 
+<div id="modalSucesso" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
+            </div>
+            <div class="modal-body">
+                <h4></h4>
+                <p>Perfil atualizado com sucesso!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Listar", "Paciente")'">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalErro" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Erro!</h4>
+            </div>
+            <div class="modal-body">
+                <h4></h4>
+                <p>Ocorreu um erro. Por favor tente novamente.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- jquery.inputmask -->
 <script src="~/Content/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
 
@@ -106,3 +146,18 @@
         $(":input").inputmask();
     });
 </script>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        if (window.location.hash == '#Sucesso') {
+            $('#modalSucesso').modal();
+        }
+    });
+
+    $(window).load(function () {
+        if (window.location.hash == '#Erro') {
+            $('#modalErro').modal();
+        }
+    });
+</script>
+

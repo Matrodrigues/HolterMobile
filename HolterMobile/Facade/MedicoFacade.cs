@@ -31,5 +31,26 @@ namespace HolterMobile.Facade
 
             return vm;
         }
+
+        public bool Alterar(CadastrarPacienteVM vm)
+        {
+            try
+            {
+                UsuarioDao usuarioDao = new UsuarioDao();
+                LoginDao loginDao = new LoginDao();
+
+                if (!usuarioDao.Alterar(vm))
+                    throw new Exception("Erro ao alterar usuário");
+
+                if (!loginDao.AlterarPerfilMedico(vm))
+                    throw new Exception("Erro ao alterar login");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

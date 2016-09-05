@@ -96,5 +96,27 @@ namespace HolterMobile.DAO
                 return false;
             }
         }
+
+        public bool AlterarPerfilMedico(CadastrarPacienteVM dados)
+        {
+            try
+            {
+                HolterMobileDB db = new HolterMobileDB();
+
+                Login login = db.login.Where(x => x.id_usuario == dados.idPaciente).FirstOrDefault();
+
+                login.id_perfil = 1; // Código médico
+                login.ds_senha = dados.senha;
+                login.ds_username = dados.usuario;
+
+                db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

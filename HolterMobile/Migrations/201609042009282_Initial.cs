@@ -114,20 +114,15 @@ namespace HolterMobile.Migrations
                     {
                         id_monitoramento = c.Int(nullable: false, identity: true),
                         id_paciente = c.Int(nullable: false),
-                        id_aparelho = c.Int(nullable: false),
                         bpm = c.Int(nullable: false),
                         horario = c.DateTime(nullable: false),
-                        id_atividade = c.Int(nullable: false),
+                        ds_atividade = c.String(),
                         latitude = c.String(),
                         longitude = c.String(),
                     })
                 .PrimaryKey(t => t.id_monitoramento)
-                .ForeignKey("dbo.TB_APARELHO", t => t.id_aparelho, cascadeDelete: true)
-                .ForeignKey("dbo.TB_ATIVIDADES", t => t.id_atividade, cascadeDelete: true)
                 .ForeignKey("dbo.TB_USUARIO", t => t.id_paciente, cascadeDelete: true)
-                .Index(t => t.id_paciente)
-                .Index(t => t.id_aparelho)
-                .Index(t => t.id_atividade);
+                .Index(t => t.id_paciente);
             
             CreateTable(
                 "dbo.TB_PACIENTE_MEDICO",
@@ -158,16 +153,12 @@ namespace HolterMobile.Migrations
         {
             DropForeignKey("dbo.TB_RESPONSAVEIS", "id_usuario", "dbo.TB_USUARIO");
             DropForeignKey("dbo.TB_MONITORAMENTO", "id_paciente", "dbo.TB_USUARIO");
-            DropForeignKey("dbo.TB_MONITORAMENTO", "id_atividade", "dbo.TB_ATIVIDADES");
-            DropForeignKey("dbo.TB_MONITORAMENTO", "id_aparelho", "dbo.TB_APARELHO");
             DropForeignKey("dbo.TB_LOGIN", "id_usuario", "dbo.TB_USUARIO");
             DropForeignKey("dbo.TB_LOGIN", "id_perfil", "dbo.TB_PERFIL");
             DropForeignKey("dbo.TB_LOG_ACESSO", "id_usuario", "dbo.TB_USUARIO");
             DropForeignKey("dbo.TB_LOG_ACESSO", "id_perfil", "dbo.TB_PERFIL");
             DropForeignKey("dbo.TB_ENDERECO", "id_usuario", "dbo.TB_USUARIO");
             DropIndex("dbo.TB_RESPONSAVEIS", new[] { "id_usuario" });
-            DropIndex("dbo.TB_MONITORAMENTO", new[] { "id_atividade" });
-            DropIndex("dbo.TB_MONITORAMENTO", new[] { "id_aparelho" });
             DropIndex("dbo.TB_MONITORAMENTO", new[] { "id_paciente" });
             DropIndex("dbo.TB_LOGIN", new[] { "id_perfil" });
             DropIndex("dbo.TB_LOGIN", new[] { "id_usuario" });
