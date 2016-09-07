@@ -24,6 +24,7 @@ namespace HolterMobile.DB
         public DbSet<Atividade> atividades { get; set; }
         public DbSet<Responsaveis> responsaveis { get; set; }
         public DbSet<Chat> chat { get; set; }
+        public DbSet<TempPress> tempPress { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

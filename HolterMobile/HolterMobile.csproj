@@ -220,9 +220,9 @@
     </Compile>
     <Compile Include="Helpers\ValidDouble.cs" />
     <Compile Include="Helpers\ValidInteger.cs" />
-    <Compile Include="Migrations\201609042009282_Initial.cs" />
-    <Compile Include="Migrations\201609042009282_Initial.Designer.cs">
-      <DependentUpon>201609042009282_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201609071914577_Initial.cs" />
+    <Compile Include="Migrations\201609071914577_Initial.Designer.cs">
+      <DependentUpon>201609071914577_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aparelho.cs" />
@@ -236,6 +236,7 @@
     <Compile Include="Models\PacienteMedico.cs" />
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Responsaveis.cs" />
+    <Compile Include="Models\TempPress.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\ViewModel\CadastrarPacienteVM.cs" />
     <Compile Include="Models\ViewModel\DropDown.cs" />
@@ -3663,8 +3664,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609042009282_Initial.resx">
-      <DependentUpon>201609042009282_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609071914577_Initial.resx">
+      <DependentUpon>201609071914577_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

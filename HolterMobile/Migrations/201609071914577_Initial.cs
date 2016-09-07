@@ -147,10 +147,25 @@ namespace HolterMobile.Migrations
                 .ForeignKey("dbo.TB_USUARIO", t => t.id_usuario, cascadeDelete: true)
                 .Index(t => t.id_usuario);
             
+            CreateTable(
+                "dbo.TB_TEMP_PRESS",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        id_usuario = c.Int(nullable: false),
+                        horario = c.DateTime(nullable: false),
+                        temperatura = c.Double(nullable: false),
+                        pressao = c.Double(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.TB_USUARIO", t => t.id_usuario, cascadeDelete: true)
+                .Index(t => t.id_usuario);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.TB_TEMP_PRESS", "id_usuario", "dbo.TB_USUARIO");
             DropForeignKey("dbo.TB_RESPONSAVEIS", "id_usuario", "dbo.TB_USUARIO");
             DropForeignKey("dbo.TB_MONITORAMENTO", "id_paciente", "dbo.TB_USUARIO");
             DropForeignKey("dbo.TB_LOGIN", "id_usuario", "dbo.TB_USUARIO");
@@ -158,6 +173,7 @@ namespace HolterMobile.Migrations
             DropForeignKey("dbo.TB_LOG_ACESSO", "id_usuario", "dbo.TB_USUARIO");
             DropForeignKey("dbo.TB_LOG_ACESSO", "id_perfil", "dbo.TB_PERFIL");
             DropForeignKey("dbo.TB_ENDERECO", "id_usuario", "dbo.TB_USUARIO");
+            DropIndex("dbo.TB_TEMP_PRESS", new[] { "id_usuario" });
             DropIndex("dbo.TB_RESPONSAVEIS", new[] { "id_usuario" });
             DropIndex("dbo.TB_MONITORAMENTO", new[] { "id_paciente" });
             DropIndex("dbo.TB_LOGIN", new[] { "id_perfil" });
@@ -165,6 +181,7 @@ namespace HolterMobile.Migrations
             DropIndex("dbo.TB_LOG_ACESSO", new[] { "id_perfil" });
             DropIndex("dbo.TB_LOG_ACESSO", new[] { "id_usuario" });
             DropIndex("dbo.TB_ENDERECO", new[] { "id_usuario" });
+            DropTable("dbo.TB_TEMP_PRESS");
             DropTable("dbo.TB_RESPONSAVEIS");
             DropTable("dbo.TB_PACIENTE_MEDICO");
             DropTable("dbo.TB_MONITORAMENTO");
