@@ -45,7 +45,7 @@ namespace HolterMobile.Controllers.Medico
 
         public ActionResult Alterar(int idPaciente)
         {
-            PacienteFacade facade = new PacienteFacade();            
+            PacienteFacade facade = new PacienteFacade();
 
             CadastrarPacienteVM vm = new CadastrarPacienteVM();
             vm.idPaciente = idPaciente;
@@ -62,8 +62,8 @@ namespace HolterMobile.Controllers.Medico
                 PacienteFacade facade = new PacienteFacade();
                 vm.idLogado = Convert.ToInt32(Session["MedicoId"]);
 
-                if(facade.AlterarPaciente(vm))
-                    return Redirect("/Medico/Paciente/Alterar/" + vm.idPaciente +"#Sucesso");
+                if (facade.AlterarPaciente(vm))
+                    return Redirect("/Medico/Paciente/Alterar/" + vm.idPaciente + "#Sucesso");
                 else
                     return Redirect("/Medico/Paciente/Alterar/" + vm.idPaciente + "#Erro");
             }
@@ -86,6 +86,18 @@ namespace HolterMobile.Controllers.Medico
                 return Redirect("/Medico/Paciente/Listar/#ExcluidoSucesso");
             else
                 return Redirect("/Medico/Paciente/Listar/#ExcluidoErro");
+        }
+
+        [HttpGet]
+        public ActionResult Relatorio(int idPaciente)
+        {
+
+            return View("~/Views/Medico/Paciente/Relatorio.cshtml");
+        }
+
+        public String Teste()
+        {
+            return "dsadasdasdasdas";
         }
 
     }

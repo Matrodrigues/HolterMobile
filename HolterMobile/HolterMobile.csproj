@@ -220,9 +220,9 @@
     </Compile>
     <Compile Include="Helpers\ValidDouble.cs" />
     <Compile Include="Helpers\ValidInteger.cs" />
-    <Compile Include="Migrations\201609071914577_Initial.cs" />
-    <Compile Include="Migrations\201609071914577_Initial.Designer.cs">
-      <DependentUpon>201609071914577_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201609101641269_Initial.cs" />
+    <Compile Include="Migrations\201609101641269_Initial.Designer.cs">
+      <DependentUpon>201609101641269_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aparelho.cs" />
@@ -3655,6 +3655,7 @@
     <Content Include="Views\Medico\Paciente\Listar.cshtml" />
     <Content Include="Views\Medico\Paciente\Alterar.cshtml" />
     <Content Include="Views\Medico\Paciente\Chat.cshtml" />
+    <Content Include="Views\Medico\Paciente\Relatorio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
@@ -3664,8 +3665,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609071914577_Initial.resx">
-      <DependentUpon>201609071914577_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609101641269_Initial.resx">
+      <DependentUpon>201609101641269_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -47,7 +47,7 @@
                                     <a href="@Url.Action("Alterar/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
                                         <i class="fa fa-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;
                                     </a>
-                                    <a href="@Url.Action("Alterar/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                    <a href="@Url.Action("Relatorio/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
                                         <i class="fa fa-bar-chart-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;
                                     </a>
                                     <a href="#" id="ItemExluir" class="ItemExluir" data-target="#modal" data-toggle="modal" data-id="@u.id_usuario">
