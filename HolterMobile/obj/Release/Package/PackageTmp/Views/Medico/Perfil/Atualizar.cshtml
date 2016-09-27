@@ -1,0 +1,163 @@
+﻿@model HolterMobile.Models.ViewModel.CadastrarPacienteVM
+@{
+    ViewBag.Title = "Atualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="title-left">
+    <a href="#">Médico</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="#">Atualizar Perfil</a>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Médico</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width:24px;">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            @using (Html.BeginForm("Alterar", "Perfil", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+            {
+                @Html.ValidationSummary(true)
+                <div class="x_content">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Nome <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.primeiroNome, new { @class = "form-control" }) @Html.ValidationMessage("primeiroNome")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Sobrenome <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.sobrenome, new { @class = "form-control" }) @Html.ValidationMessage("sobrenome")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Sexo <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            Masculino @Html.RadioButtonFor(model => model.sexo, "M", new { @class = "flat" })
+                            Feminino @Html.RadioButtonFor(model => model.sexo, "F", new { @class = "flat" })
+                            @Html.ValidationMessage("sexo")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Nascimento <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.dataNascto, new { @class = "form-control", @data_inputmask = "'mask': '99/99/9999'" }) @Html.ValidationMessage("dataNascto")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Usuário <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.usuario, new { @class = "form-control" }) @Html.ValidationMessage("usuario")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
+                            Senha <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-6 col-xs-12">
+                            @Html.PasswordFor(model => model.senha, new { value = Model.senha, @class = "form-control" }) @Html.ValidationMessage("senha")
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <button type="button" onclick="location.href='@Url.Action("Listar", "Paciente")'" class="btn btn-primary">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Alterar</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="modalSucesso" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
+            </div>
+            <div class="modal-body">
+                <h4></h4>
+                <p>Perfil atualizado com sucesso!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Listar", "Paciente")'">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalErro" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Erro!</h4>
+            </div>
+            <div class="modal-body">
+                <h4></h4>
+                <p>Ocorreu um erro. Por favor tente novamente.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jquery.inputmask -->
+<script src="~/Content/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+
+<!-- jquery.inputmask -->
+<script>
+    $(document).ready(function () {
+        $(":input").inputmask();
+    });
+</script>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        if (window.location.hash == '#Sucesso') {
+            $('#modalSucesso').modal();
+        }
+    });
+
+    $(window).load(function () {
+        if (window.location.hash == '#Erro') {
+            $('#modalErro').modal();
+        }
+    });
+</script>
+

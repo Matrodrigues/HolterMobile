@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Holter Mobile </title>
+    <!-- Bootstrap -->
+    <link href="~/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Content/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Content/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/Content/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="~/Content/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="~/Content/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/Content/build/css/custom.min.css" rel="stylesheet">
+
+</head>
+<body class="nav-md">
+    <!-- jQuery -->
+    <script src="~/Content/vendors/jquery/dist/jquery.min.js"></script>
+
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("_Menus")
+
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+
+            <!-- footer content -->
+            <footer>
+                <div class="copyright-info">
+                    <p class="pull-right">
+                        © Copyright 2016 - Powered By UNIFIEO - Todos os direitos reservados.
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="~/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Content/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/Content/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="~/Content/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="~/Content/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/Content/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/Content/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="~/Content/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="~/Content/vendors/Flot/jquery.flot.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="~/Content/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="~/Scripts/flot/jquery.flot.orderBars.js"></script>
+    <script src="~/Scripts/flot/date.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.spline.js"></script>
+    <script src="~/Scripts/flot/curvedLines.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Content/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/Content/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/Content/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/Scripts/moment/moment.min.js"></script>
+    <script src="~/Scripts/datepicker/daterangepicker.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/Content/build/js/custom.min.js"></script>
+</body>
+</html>

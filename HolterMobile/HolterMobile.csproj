@@ -241,6 +241,7 @@
     <Compile Include="Models\ViewModel\CadastrarPacienteVM.cs" />
     <Compile Include="Models\ViewModel\DropDown.cs" />
     <Compile Include="Models\ViewModel\ListaUsuarioVM.cs" />
+    <Compile Include="Models\ViewModel\RelatorioVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\ViewModel\BaseVM.cs" />
@@ -3656,6 +3657,8 @@
     <Content Include="Views\Medico\Paciente\Alterar.cshtml" />
     <Content Include="Views\Medico\Paciente\Chat.cshtml" />
     <Content Include="Views\Medico\Paciente\Relatorio.cshtml" />
+    <None Include="Properties\PublishProfiles\HolterAPIWS - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\HolterAPIWS - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Content\vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
@@ -3688,7 +3691,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51122</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51123/</IISUrl>
+          <IISUrl>http://localhost:51124/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HolterMobile.Models.ViewModel;
+using HolterMobile.Models;
 using HolterMobile.Facade;
 
 namespace HolterMobile.Controllers.Medico
@@ -95,9 +96,37 @@ namespace HolterMobile.Controllers.Medico
             return View("~/Views/Medico/Paciente/Relatorio.cshtml");
         }
 
-        public String Teste()
+        [HttpGet]
+        public ActionResult PegaMedicoes(int idPaciente)
         {
-            return "dsadasdasdasdas";
+            RelatorioVM vm = new RelatorioVM();
+
+            vm.dataFinal = DateTime.Today;
+            vm.dataInicial = DateTime.Today;
+            vm.idPaciente = idPaciente;
+
+            /* TESTE
+
+            for (int i = 1; i < 10; i++)
+            {
+                Monitoramento m = new Monitoramento();
+
+                m.horario = new DateTime().AddDays(i);
+                m.bpm = 80;
+
+                vm.listaMedidas.Add(m);
+            }
+
+            var teste = vm.listaMedidas;
+
+            return Json(teste, JsonRequestBehavior.AllowGet);
+            */
+
+            PacienteFacade f = new PacienteFacade();
+
+            vm = f.CarregaRelatorio(vm);
+
+            return Json(vm.listaMedidas, JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -1,0 +1,98 @@
+﻿@model HolterMobile.Models.ViewModel.LoginVM
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Holter Mobile</title>
+    <!-- Bootstrap -->
+    <link href="~/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Content/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/Content/build/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("Login", "Login"))
+                    {
+                        @Html.ValidationSummary(true)
+                        <h1>Login</h1>
+                        <div>
+                            @Html.TextBoxFor(model => model.usuario, new { @class = "form-control" }) @Html.ValidationMessage("usuario")
+                        </div>
+                        <div>
+                            @Html.PasswordFor(model => model.senha, new { @class = "form-control" }) @Html.ValidationMessage("senha")
+                        </div>
+                        @*@Html.DropDownListFor(model => model.area, Model.AreaList, new { @class = "form-control" })*@
+                        <div>
+                            <button type="submit" class="btn btn-default submit">Login</button>
+                            <a class="reset_pass" href="#">Esqueceu sua senha?</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><i class="fa fa-plus-square" style="font-size: 26px;"></i> Holter Mobile</h1>
+                                <p>© Copyright 2016 - Powered By UNIFIEO - Todos os direitos reservados.</p>
+                            </div>
+                        </div>
+                    }
+                    <!-- form -->
+                </section>
+                <!-- content -->
+            </div>
+        </div>
+        <div id="modal" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Ops...</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Erro ao efetuar login</h4>
+                        <p>O usuário e a senha que você digitou não coincidem.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Content/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            if (window.location.hash == '#InvalidUser') {
+                $('#modal').modal();
+            }
+        });
+    </script>
+
+</body>
+</html>
