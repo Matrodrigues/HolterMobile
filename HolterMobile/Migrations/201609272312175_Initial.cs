@@ -155,7 +155,8 @@ namespace HolterMobile.Migrations
                         id_usuario = c.Int(nullable: false),
                         horario = c.DateTime(nullable: false),
                         temperatura = c.Double(nullable: false),
-                        pressao = c.Double(nullable: false),
+                        pressao_max = c.Double(nullable: false),
+                        pressao_min = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
                 .ForeignKey("dbo.TB_USUARIO", t => t.id_usuario, cascadeDelete: true)

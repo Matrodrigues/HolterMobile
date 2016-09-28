@@ -220,9 +220,9 @@
     </Compile>
     <Compile Include="Helpers\ValidDouble.cs" />
     <Compile Include="Helpers\ValidInteger.cs" />
-    <Compile Include="Migrations\201609101641269_Initial.cs" />
-    <Compile Include="Migrations\201609101641269_Initial.Designer.cs">
-      <DependentUpon>201609101641269_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201609272312175_Initial.cs" />
+    <Compile Include="Migrations\201609272312175_Initial.Designer.cs">
+      <DependentUpon>201609272312175_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aparelho.cs" />
@@ -3668,8 +3668,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609101641269_Initial.resx">
-      <DependentUpon>201609101641269_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609272312175_Initial.resx">
+      <DependentUpon>201609272312175_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

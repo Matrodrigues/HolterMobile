@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using HolterMobile.Models.ViewModel;
 using HolterMobile.Models;
 using HolterMobile.Facade;
+using HolterMobile.DAO;
 
 namespace HolterMobile.Controllers.Medico
 {
@@ -92,8 +93,25 @@ namespace HolterMobile.Controllers.Medico
         [HttpGet]
         public ActionResult Relatorio(int idPaciente)
         {
+            RelatorioVM vm = new RelatorioVM();
 
-            return View("~/Views/Medico/Paciente/Relatorio.cshtml");
+            UsuarioDao uDao = new UsuarioDao();
+
+            vm.usuario = uDao.PegaUsuario(idPaciente);
+
+            vm.idade = GetAge(vm.usuario.dt_nasc);
+
+            return View("~/Views/Medico/Paciente/Relatorio.cshtml", vm);
+        }
+
+        private int GetAge(DateTime dateOfBirth)
+        {
+            var today = DateTime.Today;
+
+            var a = (today.Year * 100 + today.Month) * 100 + today.Day;
+            var b = (dateOfBirth.Year * 100 + dateOfBirth.Month) * 100 + dateOfBirth.Day;
+
+            return (a - b) / 10000;
         }
 
         [HttpGet]

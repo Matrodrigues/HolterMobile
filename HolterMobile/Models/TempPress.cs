@@ -21,6 +21,8 @@ namespace HolterMobile.Models
 
         public double temperatura { get; set; }
 
-        public double pressao { get; set; }
+        public double pressao_max { get; set; }
+
+        public double pressao_min { get; set; }
     }
 }
