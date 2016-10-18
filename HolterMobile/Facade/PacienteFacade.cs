@@ -143,7 +143,27 @@ namespace HolterMobile.Facade
         {
             MonitoramentoDao dao = new MonitoramentoDao();
 
-            dados.listaMedidas = dao.PegarBatimentos(dados.idPaciente, dados.dataInicial, dados.dataFinal);
+            List<Monitoramento> mediaPorDia = new List<Monitoramento>();
+
+            List<Monitoramento> medicoes = dao.PegarBatimentos(dados.idPaciente, dados.dataInicial, dados.dataFinal);
+
+            IEnumerable<string> datasDistintas = medicoes.Select(x => x.horario.ToShortDateString()).Distinct();
+
+            foreach (string d in datasDistintas)
+            {
+                Monitoramento monitor = new Monitoramento();
+
+                List<Monitoramento> medicoesDoDia = medicoes.Where(x => x.horario.ToShortDateString() == d).ToList();
+
+                int bpmModa = medicoesDoDia.GroupBy(x => x.bpm).OrderByDescending(x => x.Count()).First().Key;
+
+                monitor.bpm = bpmModa;
+                monitor.horario = Convert.ToDateTime(d);
+
+                mediaPorDia.Add(monitor);
+            }
+
+            dados.listaMedidas = mediaPorDia;
 
             return dados;
         }

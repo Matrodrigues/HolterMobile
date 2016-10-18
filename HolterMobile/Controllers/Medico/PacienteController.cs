@@ -119,8 +119,8 @@ namespace HolterMobile.Controllers.Medico
         {
             RelatorioVM vm = new RelatorioVM();
 
-            vm.dataFinal = DateTime.Today;
-            vm.dataInicial = DateTime.Today;
+            vm.dataInicial = DateTime.Today.AddDays(-5);
+            vm.dataFinal = DateTime.Today.AddDays(1);
             vm.idPaciente = idPaciente;
 
             /* TESTE

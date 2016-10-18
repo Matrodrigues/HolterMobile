@@ -10,11 +10,14 @@
 <script src="~/Content/vendors/Flot/jquery.flot.time.js"></script>
 <script src="~/Content/vendors/Flot/jquery.flot.stack.js"></script>
 <script src="~/Content/vendors/Flot/jquery.flot.resize.js"></script>
+<script src="~/Content/vendors/Flot/jquery.flot.tickrotor.js"></script>
 
 <script>
     $(document).ready(function () {
 
         var idPaciente = window.location.toString().substring(window.location.toString().length - 1);
+
+        var retorno;
 
         $.ajax({
             url: '/Paciente/PegaMedicoes/',
@@ -22,7 +25,8 @@
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                //alert(data);
+
+                geraGrafico(data);
             },
             statusCode: {
                 404: function (content) { alert('Não foi possível encontrar o caminho'); },
@@ -32,100 +36,113 @@
                 // handle status === "timeout"
                 // handle other errors
             }
-        });
+        });        
 
-        var chartColours = ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'];
+        function geraGrafico(data) {
+            var chartColours = ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'];
 
-        var d1 = [];
+            var d1 = [];
 
-        d1.push([new Date(Date.today().add(1).days()).getTime(), '10']);
-        d1.push([new Date(Date.today().add(2).days()).getTime(), '20']);
-        d1.push([new Date(Date.today().add(3).days()).getTime(), '30']);
-        d1.push([new Date(Date.today().add(4).days()).getTime(), '40']);
-        d1.push([new Date(Date.today().add(5).days()).getTime(), '50']);
-        d1.push([new Date(Date.today().add(6).days()).getTime(), '60']);
+            for (var i = 0; i < data.length; i++) {
 
-        var chartMinDate = d1[0][0]; //first day
-        var chartMaxDate = d1[5][0]; //last day
+                alert(data[i].horario.substring(6).replace(')/', ''), data[i].bpm)
 
-        //graph options
-        var options = {
-            grid: {
-                show: true,
-                aboveData: true,
-                color: "#3f3f3f",
-                labelMargin: 10,
-                axisMargin: 0,
-                borderWidth: 0,
-                borderColor: null,
-                minBorderMargin: 5,
-                clickable: true,
-                hoverable: true,
-                autoHighlight: true,
-                mouseActiveRadius: 100
-            },
-            series: {
-                lines: {
+                d1.push([data[i].horario.substring(6).replace(')/', ''), data[i].bpm]);
+            }
+
+           
+            //randNum = function () {
+            //    return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
+            //};
+
+            //for (var i = 0; i < 30; i++) {
+            //    d1.push([new Date(Date.today().add(i).days()).getTime(), randNum() + i + i + 10]);
+            //}
+
+            var chartMinDate = d1[0][0]; //first day
+            var chartMaxDate = d1[data.length - 1][0]; //last day
+
+            //alert(chartMinDate + '   ' + chartMaxDate);
+
+            //graph options
+            var options = {
+                grid: {
                     show: true,
-                    fill: true,
-                    lineWidth: 2,
-                    steps: false
+                    aboveData: true,
+                    color: "#3f3f3f",
+                    labelMargin: 10,
+                    axisMargin: 0,
+                    borderWidth: 0,
+                    borderColor: null,
+                    minBorderMargin: 5,
+                    clickable: true,
+                    hoverable: true,
+                    autoHighlight: true,
+                    mouseActiveRadius: 100
                 },
-                points: {
-                    show: true,
-                    radius: 4.5,
-                    symbol: "circle",
-                    lineWidth: 3.0
+                series: {
+                    lines: {
+                        show: true,
+                        fill: true,
+                        lineWidth: 2,
+                        steps: false
+                    },
+                    points: {
+                        show: true,
+                        radius: 4.5,
+                        symbol: "circle",
+                        lineWidth: 3.0
+                    }
+                },
+                legend: {
+                    position: "ne",
+                    margin: [0, -25],
+                    noColumns: 0,
+                    labelBoxBorderColor: null,
+                    labelFormatter: function (label, series) {
+                        // just add some space to labes
+                        return label + '&nbsp;&nbsp;';
+                    },
+                    width: 40,
+                    height: 1
+                },
+                colors: chartColours,
+                shadowSize: 0,
+                tooltip: true, //activate tooltip
+                tooltipOpts: {
+                    content: "%s: %y.0",
+                    xDateFormat: "%d/%m",
+                    shifts: {
+                        x: -30,
+                        y: -50
+                    },
+                    defaultTheme: false
+                },
+                yaxis: {
+                    min: 0,
+                    max: 200,
+                    ticks: 10
+                },
+                xaxis: {
+                    mode: "time",
+                    minTickSize: [1, "day"],
+                    timeformat: "%d/%m/%y",
+                    min: chartMinDate,
+                    max: chartMaxDate
                 }
-            },
-            legend: {
-                position: "ne",
-                margin: [0, -25],
-                noColumns: 0,
-                labelBoxBorderColor: null,
-                labelFormatter: function (label, series) {
-                    // just add some space to labes
-                    return label + '&nbsp;&nbsp;';
-                },
-                width: 40,
-                height: 1
-            },
-            colors: chartColours,
-            shadowSize: 0,
-            tooltip: true, //activate tooltip
-            tooltipOpts: {
-                content: "%s: %y.0",
-                xDateFormat: "%d/%m",
-                shifts: {
-                    x: -30,
-                    y: -50
-                },
-                defaultTheme: false
-            },
-            yaxis: {
-                min: 0,
-                max: 200,
-                ticks: 10
-            },
-            xaxis: {
-                mode: "time",
-                minTickSize: [1, "day"],
-                timeformat: "%d/%m/%y",
-                min: chartMinDate,
-                max: chartMaxDate
-            }
-        };
+            };
 
-        var plot = $.plot($("#placeholder33x"), [{
-            label: "Email Sent",
-            data: d1,
-            lines: {
-                fillColor: "rgba(150, 202, 89, 0.12)"
-            }, //#96CA59 rgba(150, 202, 89, 0.42)
-            points: {
-                fillColor: "#fff"
-            }
-        }], options);
+            var plot = $.plot($("#placeholder33x"), [{
+                label: "Batimento Cardíaco",
+                data: d1,
+                lines: {
+                    fillColor: "rgba(150, 202, 89, 0.12)"
+                }, //#96CA59 rgba(150, 202, 89, 0.42)
+                points: {
+                    fillColor: "#fff"
+                }
+            }], options);
+        }
 
 
         var previousPoint = null;

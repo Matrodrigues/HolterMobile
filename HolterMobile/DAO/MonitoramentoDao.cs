@@ -16,7 +16,7 @@ namespace HolterMobile.DAO
 
             HolterMobileDB db = new HolterMobileDB();
 
-            m = db.monitoramento.Where(x => x.id_paciente == idPaciente && x.horario >= dataInicial && x.horario <= dataFinal).ToList();
+            m = db.monitoramento.Where(x => x.id_paciente == idPaciente && x.horario >= dataInicial && x.horario <= dataFinal).OrderBy(x => x.horario).ToList();
 
             return m;
         }
