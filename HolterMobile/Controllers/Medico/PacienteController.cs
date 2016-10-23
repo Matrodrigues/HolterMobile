@@ -101,6 +101,10 @@ namespace HolterMobile.Controllers.Medico
 
             vm.idade = GetAge(vm.usuario.dt_nasc);
 
+            vm.dataInicial = DateTime.Today;
+
+            vm.dataFinal = DateTime.Today.AddDays(1);
+
             return View("~/Views/Medico/Paciente/Relatorio.cshtml", vm);
         }
 
@@ -115,12 +119,18 @@ namespace HolterMobile.Controllers.Medico
         }
 
         [HttpGet]
-        public ActionResult PegaMedicoes(int idPaciente)
+        public ActionResult PegaMedicoes(int idPaciente, string dataInicial, string dataFinal)
         {
             RelatorioVM vm = new RelatorioVM();
 
-            vm.dataInicial = DateTime.Today.AddDays(-5);
-            vm.dataFinal = DateTime.Today.AddDays(1);
+            if (dataInicial == "" && dataFinal == "")
+            {
+                dataInicial = DateTime.Today.ToShortDateString();
+                dataFinal = DateTime.Today.AddDays(1).ToShortDateString();
+            }
+
+            vm.dataInicial = Convert.ToDateTime(dataInicial);
+            vm.dataFinal = Convert.ToDateTime(dataFinal);
             vm.idPaciente = idPaciente;
 
             /* TESTE

@@ -14,12 +14,12 @@ namespace HolterMobile.Models.ViewModel
         [Required(ErrorMessage = "Favor insera a data de início.")]
         [DataType(DataType.Date, ErrorMessage = "Data inválida")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime dataInicial { get; set; }
+        public DateTime? dataInicial { get; set; }
 
         [Required(ErrorMessage = "Favor inserir a data final .")]
         [DataType(DataType.Date, ErrorMessage = "Data inválida")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime dataFinal { get; set; }
+        public DateTime? dataFinal { get; set; }
 
         public List<Monitoramento> listaMedidas { get; set; }
 

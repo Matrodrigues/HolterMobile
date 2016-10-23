@@ -13,7 +13,7 @@ namespace HolterMobile.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201609272312175_Initial"; }
+            get { return "201610231917334_Initial"; }
         }
         
         string IMigrationMetadata.Source
