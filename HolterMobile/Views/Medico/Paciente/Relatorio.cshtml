@@ -63,12 +63,13 @@
 
             var d1 = [];
 
-            for (var i = 0; i < data.length; i++) {
-                d1.push([data[i].horario.substring(6).replace(')/', ''), data[i].bpm]);
+            for (var i = 0; i < data.listaMedidas.length; i++) {
+                //alert(data.listaMedidas[i].horario.substring(6).replace(')/', '') + '    ' + data.listaMedidas[i].bpm);
+                d1.push([data.listaMedidas[i].horario.substring(6).replace(')/', ''), data.listaMedidas[i].bpm]);
             }
 
             var chartMinDate = d1[0][0]; //first day
-            var chartMaxDate = d1[data.length - 1][0]; //last day
+            var chartMaxDate = d1[data.listaMedidas.length - 1][0]; //last day
 
             //graph options
             var options = {

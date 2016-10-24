@@ -23,6 +23,10 @@ namespace HolterMobile.Models.ViewModel
 
         public List<Monitoramento> listaMedidas { get; set; }
 
+        public List<TempPress> listaPressao { get; set; }
+
+        public List<TempPress> listaTemperatura { get; set; }
+
         public Usuario usuario { get; set; }
 
         public int idade { get; set; }

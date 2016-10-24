@@ -141,6 +141,8 @@ namespace HolterMobile.Facade
 
         public RelatorioVM CarregaRelatorio(RelatorioVM dados)
         {
+            #region Pega dados de Batimento Cardíaco
+
             MonitoramentoDao dao = new MonitoramentoDao();
 
             List<Monitoramento> mediaPorDia = new List<Monitoramento>();
@@ -164,6 +166,64 @@ namespace HolterMobile.Facade
             }
 
             dados.listaMedidas = mediaPorDia;
+
+            #endregion
+
+            TempPressDao tmpPressaoDao = new TempPressDao();
+            List<TempPress> listaTotal = tmpPressaoDao.PegarTempPress(dados.idPaciente, dados.dataInicial, dados.dataFinal);
+
+            #region Pega Dados de Temperatura
+
+            List<TempPress> listaTemperatura = listaTotal.Where(x => x.temperatura != 0).ToList();            
+            List<TempPress> listaTemperaturaPorDia = new List<TempPress>();
+
+            IEnumerable<string> datasDistintasTemperatura = listaTemperatura.Select(x => x.horario.ToShortDateString()).Distinct();
+            IEnumerable<string> datasDistintasPressao = listaTemperatura.Select(x => x.horario.ToShortDateString()).Distinct();
+
+            foreach (string d in datasDistintasTemperatura)
+            {
+                TempPress temp = new TempPress();
+
+                List<TempPress> tempDoDia = listaTemperatura.Where(x => x.horario.ToShortDateString() == d).ToList();
+
+                double tempModa = tempDoDia.GroupBy(x => x.temperatura).OrderByDescending(x => x.Count()).First().Key;
+
+                temp.temperatura = tempModa;
+                temp.horario = Convert.ToDateTime(d);
+
+                listaTemperaturaPorDia.Add(temp);
+            }
+
+            dados.listaTemperatura = listaTemperaturaPorDia;
+
+            #endregion
+
+            #region Pega Dados de Pressão
+
+            List<TempPress> listaPressao = listaTotal.Where(x => x.pressao_max != 0 && x.pressao_min != 0).ToList();
+            List<TempPress> listaPressaoPorDia = new List<TempPress>();
+
+            foreach (string d in datasDistintasPressao)
+            {
+                TempPress press = new TempPress();
+
+                List<TempPress> pressDoDia = listaPressao.Where(x => x.horario.ToShortDateString() == d).ToList();
+
+                //double tempModa = pressDoDia.GroupBy(x => x.pressao_max ).OrderByDescending(x => x.Count()).First().Key;
+
+                double pressMaxModa = pressDoDia.GroupBy(x => new { x.pressao_max, x.pressao_min }).OrderByDescending(x => x.Count()).First().Key.pressao_max;
+                double pressMinModa = pressDoDia.GroupBy(x => new { x.pressao_max, x.pressao_min }).OrderByDescending(x => x.Count()).First().Key.pressao_min;
+
+                press.pressao_max = pressMaxModa;
+                press.pressao_min = pressMinModa;
+                press.horario = Convert.ToDateTime(d);
+
+                listaPressaoPorDia.Add(press);
+            }
+
+            dados.listaPressao = listaPressaoPorDia;
+
+            #endregion
 
             return dados;
         }

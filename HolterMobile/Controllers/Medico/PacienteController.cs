@@ -154,7 +154,7 @@ namespace HolterMobile.Controllers.Medico
 
             vm = f.CarregaRelatorio(vm);
 
-            return Json(vm.listaMedidas, JsonRequestBehavior.AllowGet);
+            return Json(vm, JsonRequestBehavior.AllowGet);
         }
 
     }
