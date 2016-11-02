@@ -1627,7 +1627,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2016 19:33:41</publishTime>
     </File>
     <File Include="Views/Medico/Paciente/Relatorio.cshtml">
-      <publishTime>10/24/2016 20:56:42</publishTime>
+      <publishTime>11/02/2016 19:59:43</publishTime>
     </File>
     <File Include="Views/Medico/Perfil/Atualizar.cshtml">
       <publishTime>09/04/2016 19:49:34</publishTime>
