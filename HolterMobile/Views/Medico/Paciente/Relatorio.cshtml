@@ -30,6 +30,8 @@
                 dataType: 'json',
                 success: function (data) {
                     geraGraficoBatimento(data);
+                    geraGraficoTemperatura(data);
+                    geraGraficoPressao(data);
                 },
                 statusCode: {
                     404: function (content) { alert('Não foi possível encontrar o caminho'); },
@@ -48,6 +50,8 @@
             dataType: 'json',
             success: function (data) {
                 geraGraficoBatimento(data);
+                geraGraficoTemperatura(data);
+                geraGraficoPressao(data);
             },
             statusCode: {
                 404: function (content) { alert('Não foi possível encontrar o caminho'); },
@@ -153,9 +157,238 @@
             }], options);
         }
 
+        function geraGraficoTemperatura(data) {
+            var chartColours2 = ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'];
+
+            var d2 = [];
+
+            alert(data.listaTemperatura);
+
+            for (var i = 0; i < data.listaTemperatura.length; i++) {
+                //alert(data.listaTemperatura[i].horario.substring(6).replace(')/', '') + '   ' + data.listaTemperatura[i].temperatura);
+                d2.push([data.listaTemperatura[i].horario.substring(6).replace(')/', ''), data.listaTemperatura[i].temperatura]);
+            }
+
+            var chartMinDate = d2[0][0]; //first day
+            var chartMaxDate = d2[data.listaTemperatura.length - 1][0]; //last day
+
+            //graph options
+            var options2 = {
+
+                grid: {
+                    show: true,
+                    aboveData: true,
+                    color: "#3f3f3f",
+                    labelMargin: 10,
+                    axisMargin: 0,
+                    borderWidth: 0,
+                    borderColor: null,
+                    minBorderMargin: 5,
+                    clickable: true,
+                    hoverable: true,
+                    autoHighlight: true,
+                    mouseActiveRadius: 100
+                },
+                series: {
+                    lines: {
+                        show: true,
+                        fill: true,
+                        lineWidth: 2,
+                        steps: false
+                    },
+                    points: {
+                        show: true,
+                        radius: 4.5,
+                        symbol: "circle",
+                        lineWidth: 3.0
+                    }
+                },
+                legend: {
+                    position: "ne",
+                    margin: [0, -25],
+                    noColumns: 0,
+                    labelBoxBorderColor: null,
+                    labelFormatter: function (label, series) {
+                        // just add some space to labes
+                        return label + '&nbsp;&nbsp;';
+                    },
+                    width: 40,
+                    height: 1
+                },
+                colors: chartColours2,
+                timezone: "browser",
+                shadowSize: 0,
+                tooltip: true, //activate tooltip
+                tooltipOpts: {
+                    content: "%s: %y.0",
+                    xDateFormat: "%d/%m",
+                    shifts: {
+                        x: -30,
+                        y: -50
+                    },
+                    defaultTheme: false
+                },
+                yaxis: {
+                    min: 0,
+                    max: 50,
+                    ticks: 10
+                },
+                xaxis: {
+                    mode: "time",
+                    minTickSize: [1, "day"],
+                    timeformat: "%d/%m/%y",
+                    min: chartMinDate,
+                    max: chartMaxDate
+                }
+            };
+
+            var plot = $.plot($("#placeholder34x"), [{
+                label: "Temperatura",
+                data: d2,
+                lines: {
+                    fillColor: "rgba(150, 202, 89, 0.12)"
+                }, //#96CA59 rgba(150, 202, 89, 0.42)
+                points: {
+                    fillColor: "#fff"
+                }
+            }], options2);
+        }
+
+        function geraGraficoPressao(data) {
+            var chartColours = ['#96CA59', '#3F97EB', '#72c380', '#6f7a8a', '#f7cb38', '#5a8022', '#2c7282'];
+
+            var dPressaoMax = [];
+            var dPressaoMin = [];
+
+            for (var i = 0; i < data.listaPressao.length; i++) {
+                //alert(data.listaMedidas[i].horario.substring(6).replace(')/', '') + '    ' + data.listaMedidas[i].bpm);
+                dPressaoMax.push([data.listaPressao[i].horario.substring(6).replace(')/', ''), data.listaPressao[i].pressao_max]);
+                dPressaoMin.push([data.listaPressao[i].horario.substring(6).replace(')/', ''), data.listaPressao[i].pressao_min]);
+            }
+
+            var dataset = [
+                        {
+                            label: "Pressão Max.",
+                            data: dPressaoMax,
+                            //color: "#FF0000",
+                            //points: { symbol: "circle", fillColor: "#FF0000", show: true },
+                            lines: { show: true }
+                        }, {
+                            label: "Pressão Min.",
+                            data: dPressaoMin,
+                            //yaxis: 1,
+                            //color: "#0062FF",
+                            //points: { symbol: "triangle", fillColor: "#0062FF", show: true },
+                            lines: { show: true, fill: true }
+                        }
+            ];
+
+            var chartMinDate = dPressaoMax[0][0]; //first day
+            var chartMaxDate = dPressaoMax[data.listaPressao.length - 1][0]; //last day
+
+            //graph options
+            var options = {
+
+                grid: {
+                    show: true,
+                    aboveData: true,
+                    color: "#3f3f3f",
+                    labelMargin: 10,
+                    axisMargin: 0,
+                    borderWidth: 0,
+                    borderColor: null,
+                    minBorderMargin: 5,
+                    clickable: true,
+                    hoverable: true,
+                    autoHighlight: true,
+                    mouseActiveRadius: 100
+                },
+                series: {
+                    lines: {
+                        show: true,
+                        fill: true,
+                        lineWidth: 2,
+                        steps: false,
+                        fillColor: "rgba(150, 202, 89, 0.12)"
+                    },
+                    points: {
+                        show: true,
+                        radius: 4.5,
+                        symbol: "circle",
+                        lineWidth: 3.0
+                    }
+                },
+                legend: {
+                    position: "ne",
+                    margin: [0, -25],
+                    noColumns: 0,
+                    labelBoxBorderColor: null,
+                    labelFormatter: function (label, series) {
+                        // just add some space to labes
+                        return label + '&nbsp;&nbsp;';
+                    },
+                    width: 40,
+                    height: 1
+                },
+                colors: chartColours,
+                timezone: "browser",
+                shadowSize: 0,
+                tooltip: true, //activate tooltip
+                tooltipOpts: {
+                    content: "%s: %y.0",
+                    xDateFormat: "%d/%m",
+                    shifts: {
+                        x: -30,
+                        y: -50
+                    },
+                    defaultTheme: false
+                },
+                yaxis: {
+                    min: 0,
+                    max: 200,
+                    ticks: 10
+                },
+                xaxis: {
+                    mode: "time",
+                    minTickSize: [1, "day"],
+                    timeformat: "%d/%m/%y",
+                    min: chartMinDate,
+                    max: chartMaxDate
+                }
+            };
+
+            var plot = $.plot($("#placeholder35x"), dataset, options);
+        }
+
         var previousPoint = null;
 
         $("#placeholder33x").bind("plothover", function (event, pos, item) {
+            if (item) {
+                if (previousPoint != item.datapoint) {
+                    previousPoint = item.datapoint;
+                    $("#tooltip").remove();
+                    showTooltip(item.pageX, item.pageY, item.datapoint[1]);
+                }
+            } else {
+                $("#tooltip").remove();
+                previousPoint = null;
+            }
+        });
+
+        $("#placeholder34x").bind("plothover", function (event, pos, item) {
+            if (item) {
+                if (previousPoint != item.datapoint) {
+                    previousPoint = item.datapoint;
+                    $("#tooltip").remove();
+                    showTooltip(item.pageX, item.pageY, item.datapoint[1]);
+                }
+            } else {
+                $("#tooltip").remove();
+                previousPoint = null;
+            }
+        });
+
+        $("#placeholder35x").bind("plothover", function (event, pos, item) {
             if (item) {
                 if (previousPoint != item.datapoint) {
                     previousPoint = item.datapoint;
@@ -247,7 +480,25 @@
                 <div id="placeholder33x" class="demo-placeholder" style="padding: 0px; position: relative;">
                     <canvas class="flot-base" width="755" height="280" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 755px; height: 280px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 74px; text-align: center;">11/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 144px; text-align: center;">13/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 214px; text-align: center;">15/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 285px; text-align: center;">17/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 356px; text-align: center;">19/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 426px; text-align: center;">21/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 497px; text-align: center;">23/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 567px; text-align: center;">25/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 638px; text-align: center;">27/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 709px; text-align: center;">29/09/16</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 247px; left: 12px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 206px; left: 6px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 165px; left: 6px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 124px; left: 6px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 83px; left: 6px; text-align: right;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 42px; left: 0px; text-align: right;">100</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">120</div></div></div><canvas class="flot-overlay" width="755" height="280" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 755px; height: 280px;"></canvas>
                     <div class="legend">
-                        <div style="position: absolute; width: 69px; height: 15px; top: -17px; right: 21px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:-17px;right:21px;;font-size:smaller;color:#3f3f3f"><tbody><tr><td class="legendColorBox"><div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(150,202,89);overflow:hidden"></div></div></td><td class="legendLabel">Email Sent&nbsp;&nbsp;</td></tr></tbody></table>
+                        <div style="position: absolute; width: 69px; height: 15px; top: -17px; right: 21px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:-17px;right:21px;;font-size:smaller;color:#3f3f3f"><tbody><tr><td class="legendColorBox"><div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(150,202,89);overflow:hidden"></div></div></td><td class="legendLabel">Batimento Cardíaco&nbsp;&nbsp;</td></tr></tbody></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content" style="margin-top: 30px">
+                <div id="placeholder34x" class="demo-placeholder" style="padding: 0px; position: relative;">
+                    <canvas class="flot-base" width="755" height="280" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 755px; height: 280px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 74px; text-align: center;">11/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 144px; text-align: center;">13/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 214px; text-align: center;">15/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 285px; text-align: center;">17/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 356px; text-align: center;">19/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 426px; text-align: center;">21/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 497px; text-align: center;">23/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 567px; text-align: center;">25/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 638px; text-align: center;">27/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 709px; text-align: center;">29/09/16</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 247px; left: 12px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 206px; left: 6px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 165px; left: 6px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 124px; left: 6px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 83px; left: 6px; text-align: right;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 42px; left: 0px; text-align: right;">100</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">120</div></div></div><canvas class="flot-overlay" width="755" height="280" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 755px; height: 280px;"></canvas>
+                    <div class="legend">
+                        <div style="position: absolute; width: 69px; height: 15px; top: -17px; right: 21px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:-17px;right:21px;;font-size:smaller;color:#3f3f3f"><tbody><tr><td class="legendColorBox"><div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(150,202,89);overflow:hidden"></div></div></td><td class="legendLabel">Temperatura&nbsp;&nbsp;</td></tr></tbody></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="x_content" style="margin-top: 30px">
+                <div id="placeholder35x" class="demo-placeholder" style="padding: 0px; position: relative;">
+                    <canvas class="flot-base" width="755" height="280" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 755px; height: 280px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 74px; text-align: center;">11/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 144px; text-align: center;">13/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 214px; text-align: center;">15/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 285px; text-align: center;">17/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 356px; text-align: center;">19/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 426px; text-align: center;">21/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 497px; text-align: center;">23/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 567px; text-align: center;">25/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 638px; text-align: center;">27/09/16</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 62px; top: 265px; left: 709px; text-align: center;">29/09/16</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 247px; left: 12px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 206px; left: 6px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 165px; left: 6px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 124px; left: 6px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 83px; left: 6px; text-align: right;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 42px; left: 0px; text-align: right;">100</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 0px; text-align: right;">120</div></div></div><canvas class="flot-overlay" width="755" height="280" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 755px; height: 280px;"></canvas>
+                    <div class="legend">
+                        <div style="position: absolute; width: 69px; height: 15px; top: -17px; right: 21px; opacity: 0.85; background-color: rgb(255, 255, 255);"> </div><table style="position:absolute;top:-17px;right:21px;;font-size:smaller;color:#3f3f3f"><tbody><tr><td class="legendColorBox"><div style="border:1px solid null;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(150,202,89);overflow:hidden"></div></div></td><td class="legendLabel">Pressão&nbsp;&nbsp;</td></tr></tbody></table>
                     </div>
                 </div>
             </div>
