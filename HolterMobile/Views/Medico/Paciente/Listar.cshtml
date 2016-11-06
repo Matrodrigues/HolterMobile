@@ -41,14 +41,17 @@
                                 <td>@u.nome</td>
                                 <td>@u.sobrenome</td>
                                 <td>
-                                    <a href="@Url.Action("Chat", null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                    @*<a href="@Url.Action("Chat", null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
                                         <i class="fa fa-wechat"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </a>
+                                    </a>*@
                                     <a href="@Url.Action("Alterar/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
                                         <i class="fa fa-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;
                                     </a>
                                     <a href="@Url.Action("Relatorio/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
                                         <i class="fa fa-bar-chart-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </a>
+                                    <a href="@Url.Action("Localizacao/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                        <i class="fa fa-map-marker"></i> &nbsp;&nbsp;&nbsp;&nbsp;
                                     </a>
                                     <a href="#" id="ItemExluir" class="ItemExluir" data-target="#modal" data-toggle="modal" data-id="@u.id_usuario">
                                         <i class="fa fa-close"></i>

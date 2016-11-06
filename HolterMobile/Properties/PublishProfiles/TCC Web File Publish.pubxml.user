@@ -25,7 +25,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/HolterMobile.dll">
-      <publishTime>11/02/2016 14:03:45</publishTime>
+      <publishTime>11/02/2016 20:22:43</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>08/06/2015 12:16:50</publishTime>
@@ -1627,7 +1627,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2016 19:33:41</publishTime>
     </File>
     <File Include="Views/Medico/Paciente/Relatorio.cshtml">
-      <publishTime>11/02/2016 19:59:43</publishTime>
+      <publishTime>11/02/2016 20:04:22</publishTime>
     </File>
     <File Include="Views/Medico/Perfil/Atualizar.cshtml">
       <publishTime>09/04/2016 19:49:34</publishTime>

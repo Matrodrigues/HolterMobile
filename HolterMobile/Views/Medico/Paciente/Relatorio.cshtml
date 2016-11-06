@@ -4,14 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Flot -->
-<script src="~/Content/vendors/Flot/jquery.flot.js"></script>
-<script src="~/Content/vendors/Flot/jquery.flot.pie.js"></script>
-<script src="~/Content/vendors/Flot/jquery.flot.time.js"></script>
-<script src="~/Content/vendors/Flot/jquery.flot.stack.js"></script>
-<script src="~/Content/vendors/Flot/jquery.flot.resize.js"></script>
-<script src="~/Content/vendors/Flot/jquery.flot.tickrotor.js"></script>
-
 <script>
 
     $(document).ready(function () {
@@ -119,7 +111,7 @@
                     height: 1
                 },
                 colors: chartColours,
-                timezone: "browser",
+                timezone: "America/Chicago",
                 shadowSize: 0,
                 tooltip: true, //activate tooltip
                 tooltipOpts: {
@@ -214,7 +206,7 @@
                     height: 1
                 },
                 colors: chartColours2,
-                timezone: "browser",
+                //timezone: "browser",
                 shadowSize: 0,
                 tooltip: true, //activate tooltip
                 tooltipOpts: {
@@ -329,7 +321,7 @@
                     height: 1
                 },
                 colors: chartColours,
-                timezone: "browser",
+                //timezone: "browser",
                 shadowSize: 0,
                 tooltip: true, //activate tooltip
                 tooltipOpts: {

@@ -108,6 +108,27 @@ namespace HolterMobile.Controllers.Medico
             return View("~/Views/Medico/Paciente/Relatorio.cshtml", vm);
         }
 
+        [HttpGet]
+        public ActionResult Localizacao(int idPaciente)
+        {
+            LocalizacaoVM vm = new LocalizacaoVM();
+
+            return View("~/Views/Medico/Paciente/Localizacao.cshtml", vm);
+        }
+
+        [HttpGet]
+        public ActionResult ExibirMaps(int idPaciente)
+        {
+            LocalizacaoVM vm = new LocalizacaoVM();
+            PacienteFacade f = new PacienteFacade();
+
+            vm.idPaciente = idPaciente;
+
+            vm = f.PegarLocalizacao(vm);
+
+            return Json(vm, JsonRequestBehavior.AllowGet);
+        }
+
         private int GetAge(DateTime dateOfBirth)
         {
             var today = DateTime.Today;

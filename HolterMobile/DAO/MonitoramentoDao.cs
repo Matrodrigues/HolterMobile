@@ -21,5 +21,16 @@ namespace HolterMobile.DAO
             return m;
         }
 
+        public Monitoramento PegarUltimaLocalizacao(int idPaciente)
+        {
+            Monitoramento m = new Monitoramento();
+
+            HolterMobileDB db = new HolterMobileDB();
+
+            m = db.monitoramento.Where(x => x.id_paciente == idPaciente && x.longitude != "0.0" && x.latitude != "0.0").OrderByDescending(x => x.horario).ToList().First();
+
+            return m;
+        }
+
     }
 }

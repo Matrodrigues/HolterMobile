@@ -227,5 +227,18 @@ namespace HolterMobile.Facade
 
             return dados;
         }
+
+        public LocalizacaoVM PegarLocalizacao(LocalizacaoVM vm)
+        {
+            MonitoramentoDao mDao = new MonitoramentoDao();
+
+            Monitoramento m = mDao.PegarUltimaLocalizacao(vm.idPaciente);
+
+            vm.latitude = m.latitude;
+            vm.longitude = m.longitude;
+            vm.horario = m.horario.ToString();
+
+            return vm;
+        }
     }
 }
