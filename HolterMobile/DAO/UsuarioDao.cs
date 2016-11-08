@@ -21,6 +21,15 @@ namespace HolterMobile.DAO
 
         }
 
+        public List<Usuario> ListaMedicos(int idMedico)
+        {
+            HolterMobileDB db = new HolterMobileDB();
+
+            List<int> idsMedicos = new LoginDao().PegaIdsMedicos();
+
+            return db.usuario.Where(x => idsMedicos.Contains(x.id_usuario)).ToList();
+        }
+
         public int Inserir(Usuario u)
         {
             try

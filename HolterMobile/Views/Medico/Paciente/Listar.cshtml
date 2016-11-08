@@ -4,150 +4,150 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="title-left">
-    <a href="#">Paciente</a>
-    <i class="fa fa-angle-double-right"></i>
-    <a href="perfil.html">Cadastrar Paciente</a>
-</div>
-<br />
+    <div class="title-left">
+        <a href="#">Paciente</a>
+        <i class="fa fa-angle-double-right"></i>
+        <a href="perfil.html">Cadastrar Paciente</a>
+    </div>
+    <br />
 
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Lista de Pacientes</h2>
-                <ul class="nav navbar-right panel_toolbox" style="min-width:24px;">
-                    <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>Sobrenome</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var u in Model.usuarios)
-                        {
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Lista de Pacientes</h2>
+                    <ul class="nav navbar-right panel_toolbox" style="min-width:24px;">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <th scope="row">@u.id_usuario</th>
-                                <td>@u.nome</td>
-                                <td>@u.sobrenome</td>
-                                <td>
-                                    @*<a href="@Url.Action("Chat", null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
-                                        <i class="fa fa-wechat"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </a>*@
-                                    <a href="@Url.Action("Alterar/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
-                                        <i class="fa fa-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    </a>
-                                    <a href="@Url.Action("Relatorio/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
-                                        <i class="fa fa-bar-chart-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    </a>
-                                    <a href="@Url.Action("Localizacao/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
-                                        <i class="fa fa-map-marker"></i> &nbsp;&nbsp;&nbsp;&nbsp;
-                                    </a>
-                                    <a href="#" id="ItemExluir" class="ItemExluir" data-target="#modal" data-toggle="modal" data-id="@u.id_usuario">
-                                        <i class="fa fa-close"></i>
-                                    </a>
-                                </td>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Sobrenome</th>
+                                <th></th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var u in Model.usuarios)
+                            {
+                                <tr>
+                                    <th scope="row">@u.id_usuario</th>
+                                    <td>@u.nome</td>
+                                    <td>@u.sobrenome</td>
+                                    <td>
+                                        @*<a href="@Url.Action("Chat", null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                            <i class="fa fa-wechat"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </a>*@
+                                        <a href="@Url.Action("Alterar/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                            <i class="fa fa-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </a>
+                                        <a href="@Url.Action("Relatorio/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                            <i class="fa fa-bar-chart-o"></i> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </a>
+                                        <a href="@Url.Action("Localizacao/" + @u.id_usuario, null, new { area = string.Empty, controller = "Paciente" }, Request.Url.Scheme)">
+                                            <i class="fa fa-map-marker"></i> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        </a>
+                                        <a href="#" id="ItemExluir" class="ItemExluir" data-target="#modal" data-toggle="modal" data-id="@u.id_usuario">
+                                            <i class="fa fa-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="modal" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
-            </div>
-            <div class="modal-body">
-                <h4></h4>
-                <p>O paciente será excluído!</p>
-                <p>Deseja continuar?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
-                <button id="ExcluirPaciente" type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="modalExclusaoSucesso" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
-            </div>
-            <div class="modal-body">
-                <h4></h4>
-                <p>Paciente excluído com sucesso!</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+    <div id="modal" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Atenção!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4></h4>
+                    <p>O paciente será excluído!</p>
+                    <p>Deseja continuar?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
+                    <button id="ExcluirPaciente" type="button" class="btn btn-primary" data-dismiss="modal">Sim</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="modalExclusaoErro" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Erro!</h4>
-            </div>
-            <div class="modal-body">
-                <h4></h4>
-                <p>Ocorreu um erro ao tentar excluid o paciente. Tente novamente</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+    <div id="modalExclusaoSucesso" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4></h4>
+                    <p>Paciente excluído com sucesso!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script type="text/javascript">
+    <div id="modalExclusaoErro" class="modal fade modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Erro!</h4>
+                </div>
+                <div class="modal-body">
+                    <h4></h4>
+                    <p>Ocorreu um erro ao tentar excluid o paciente. Tente novamente</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    var idParaDeletar;
+    <script type="text/javascript">
 
-    $(".ItemExluir").click(function(e) {
-        idParaDeletar = $(this).data('id');
-    });
+        var idParaDeletar;
 
-    $('#ExcluirPaciente').click(function () {
-        window.location = "/Medico/Paciente/Excluir/" + idParaDeletar;
-    });
+        $(".ItemExluir").click(function(e) {
+            idParaDeletar = $(this).data('id');
+        });
 
-    $(window).load(function () {
-        if (window.location.hash == '#ExcluidoSucesso') {
-            $('#modalExclusaoSucesso').modal();
-        }
-        if (window.location.hash == '#ExcluidoErro') {
-            $('#modalExclusaoSucesso').modal();
-        }
-    });
+        $('#ExcluirPaciente').click(function () {
+            window.location = "/Medico/Paciente/Excluir/" + idParaDeletar;
+        });
+
+        $(window).load(function () {
+            if (window.location.hash == '#ExcluidoSucesso') {
+                $('#modalExclusaoSucesso').modal();
+            }
+            if (window.location.hash == '#ExcluidoErro') {
+                $('#modalExclusaoSucesso').modal();
+            }
+        });
 
 
-</script>
+    </script>

@@ -22,16 +22,10 @@
                 <h3>Menu</h3>
                 <ul class="nav side-menu">
                     <li>
-                        <a><i class="fa fa-user"></i> Perfil <span class="fa fa-chevron-down"></span></a>
+                        <a><i class="fa fa-bar-chart"></i> Médicos <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            <li>@Html.ActionLink("Editar", "Atualizar", "Perfil")</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a><i class="fa fa-bar-chart"></i> Pacientes <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu" style="display: none">
-                            <li>@Html.ActionLink("Listar", "Listar", "Paciente")</li>
-                            <li>@Html.ActionLink("Cadastrar", "Cadastrar", "Paciente")</li>
+                            <li>@Html.ActionLink("Listar", "Listar", "Admin")</li>
+                            <li>@Html.ActionLink("Cadastrar", "Cadastrar", "Admin")</li>
                         </ul>
                     </li>
                 </ul>

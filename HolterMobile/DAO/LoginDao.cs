@@ -22,7 +22,7 @@ namespace HolterMobile.DAO
 
             HolterMobileDB db = new HolterMobileDB();
 
-            login = db.login.Where(x => x.ds_username == usuario && x.ds_senha == senha && x.id_perfil == area).FirstOrDefault();
+            login = db.login.Where(x => x.ds_username == usuario && x.ds_senha == senha && (x.id_perfil == area || x.id_perfil == 3)).FirstOrDefault();
 
             return login;
         }
@@ -97,6 +97,28 @@ namespace HolterMobile.DAO
             }
         }
 
+        public bool AlterarMedico(CadastrarPacienteVM dados)
+        {
+            try
+            {
+                HolterMobileDB db = new HolterMobileDB();
+
+                Login login = db.login.Where(x => x.id_usuario == dados.idPaciente).FirstOrDefault();
+
+                login.id_perfil = 1; // Código paciente
+                login.ds_senha = dados.senha;
+                login.ds_username = dados.usuario;
+
+                db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public bool AlterarPerfilMedico(CadastrarPacienteVM dados)
         {
             try
@@ -117,6 +139,20 @@ namespace HolterMobile.DAO
             {
                 return false;
             }
+        }
+
+        public List<int> PegaIdsMedicos()
+        {
+            HolterMobileDB db = new HolterMobileDB();
+
+            List<Login> login = db.login.Where(x => x.id_perfil == 1).ToList();
+
+            List<int> idsMedicos = new List<int>();
+
+            foreach (Login l in login)
+                idsMedicos.Add(l.id_usuario);
+
+            return idsMedicos;
         }
     }
 }

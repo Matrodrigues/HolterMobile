@@ -1,13 +1,13 @@
 ﻿@model HolterMobile.Models.ViewModel.CadastrarPacienteVM
 @{
-    ViewBag.Title = "Cadastrar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Alterar";
+    Layout = "~/Views/Shared/Admin/_Layout.cshtml";
 }
 
 <div class="title-left">
-    <a href="#">Paciente</a>
+    <a href="#">Médico</a>
     <i class="fa fa-angle-double-right"></i>
-    <a href="perfil.html">Cadastrar Paciente</a>
+    <a href="#">Alterar Médico</a>
 </div>
 <br />
 
@@ -23,7 +23,7 @@
                 </ul>
                 <div class="clearfix"></div>
             </div>
-            @using (Html.BeginForm("Cadastrar", "Paciente", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+            @using (Html.BeginForm("Alterar", "Admin", null, FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
             {
                 @Html.ValidationSummary(true)
                 <div class="x_content">
@@ -51,7 +51,7 @@
                             Sexo <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-6 col-xs-12">
-                            Masculino @Html.RadioButtonFor(model => model.sexo, "M", new { @class = "flat", @checked = true })
+                            Masculino @Html.RadioButtonFor(model => model.sexo, "M", new { @class = "flat" })
                             Feminino @Html.RadioButtonFor(model => model.sexo, "F", new { @class = "flat" })
                             @Html.ValidationMessage("sexo")
                         </div>
@@ -64,43 +64,7 @@
                         <div class="col-md-10 col-sm-6 col-xs-12">
                             @Html.TextBoxFor(model => model.dataNascto, new { @class = "form-control", @data_inputmask = "'mask': '99/99/9999'" }) @Html.ValidationMessage("dataNascto")
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
-                            Peso <span class="required">*</span>
-                        </label>
-                        <div class="col-md-10 col-sm-6 col-xs-12">
-                            @Html.TextBoxFor(model => model.peso, new { @class = "form-control" }) @Html.ValidationMessage("peso")
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
-                            Altura <span class="required">*</span>
-                        </label>
-                        <div class="col-md-10 col-sm-6 col-xs-12">
-                            @Html.TextBoxFor(model => model.altura, new { @class = "form-control" }) @Html.ValidationMessage("altura")
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
-                            BPM Máximo <span class="required">*</span>
-                        </label>
-                        <div class="col-md-10 col-sm-6 col-xs-12">
-                            @Html.TextBoxFor(model => model.bpm_max, new { @class = "form-control" }) @Html.ValidationMessage("bpm_max")
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
-                            BPM Mínimo <span class="required">*</span>
-                        </label>
-                        <div class="col-md-10 col-sm-6 col-xs-12">
-                            @Html.TextBoxFor(model => model.bpm_min, new { @class = "form-control" }) @Html.ValidationMessage("bpm_min")
-                        </div>
-                    </div>
+                    </div>                    
 
                     <div class="form-group">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">
@@ -116,15 +80,15 @@
                             Senha <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-6 col-xs-12">
-                            @Html.PasswordFor(model => model.senha, new { @class = "form-control" }) @Html.ValidationMessage("senha")
+                            @Html.PasswordFor(model => model.senha, new { value = Model.senha, @class = "form-control" }) @Html.ValidationMessage("senha")
                         </div>
                     </div>
 
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <button type="button" onclick="location.href='@Url.Action("Listar", "Paciente")'" class="btn btn-primary">Cancelar</button>
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="button" onclick="location.href='@Url.Action("Listar", "Admin")'" class="btn btn-primary">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Alterar</button>
                         </div>
                     </div>
                 </div>
@@ -143,11 +107,11 @@
                 <h4 class="modal-title" id="myModalLabel">Sucesso!</h4>
             </div>
             <div class="modal-body">
-                <h4>Paciente cadastrado com sucesso!</h4>
-                <p>Você pode acompanhar seu paciente de forma remota.</p>
+                <h4></h4>
+                <p>Médico atualizado com sucesso!</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Listar", "Paciente")'">Ok</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='@Url.Action("Listar", "Admin")'">Ok</button>
             </div>
         </div>
     </div>
@@ -159,11 +123,11 @@
 <script src="~/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-        $(window).load(function () {
-            if (window.location.hash == '#Sucesso') {
-                $('#modal').modal();
-            }
-        });
+    $(window).load(function () {
+        if (window.location.hash == '#Sucesso') {
+            $('#modal').modal();
+        }
+    });
 </script>
 
 <!-- bootstrap-daterangepicker -->
@@ -183,7 +147,7 @@
 
 <!-- jquery.inputmask -->
 <script>
-      $(document).ready(function() {
+    $(document).ready(function () {
         $(":input").inputmask();
-      });
+    });
 </script>

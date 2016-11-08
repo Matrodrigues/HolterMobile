@@ -198,6 +198,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Login\LoginController.cs" />
     <Compile Include="Controllers\Medico\PacienteController.cs" />
     <Compile Include="Controllers\Medico\PerfilController.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="DAO\PerfilDao.cs" />
     <Compile Include="DAO\UsuarioDao.cs" />
     <Compile Include="Enum\EnumPerfil.cs" />
+    <Compile Include="Facade\AdminFacade.cs" />
     <Compile Include="Facade\LoginFacade.cs" />
     <Compile Include="Facade\MedicoFacade.cs" />
     <Compile Include="Facade\PacienteFacade.cs" />
@@ -710,6 +712,12 @@
     <None Include="Properties\PublishProfiles\TCC Web File Publish.pubxml" />
     <None Include="Properties\PublishProfiles\TCC Web.pubxml" />
     <Content Include="Views\Medico\Paciente\Localizacao.cshtml" />
+    <Content Include="Views\Admin\Listar.cshtml" />
+    <Content Include="Views\Admin\Cadastrar.cshtml" />
+    <Content Include="Views\Shared\Admin\_Layout.cshtml" />
+    <Content Include="Views\Shared\Admin\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\Admin\_Menus.cshtml" />
+    <Content Include="Views\Admin\Alterar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

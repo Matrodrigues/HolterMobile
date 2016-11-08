@@ -31,6 +31,11 @@ namespace HolterMobile.Controllers.Login
 
                 if (logged == 0)
                     return Redirect("/Login/Login#InvalidUser");
+                else if (logged == 9)
+                {
+                    Session["MedicoId"] = logged;
+                    return Redirect("/Admin/Listar");
+                }
                 else
                 {
                     Session["MedicoId"] = logged;
@@ -39,6 +44,13 @@ namespace HolterMobile.Controllers.Login
             }           
 
             return View("Login", dados);
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            Session["MedicoId"] = null;
+            return View("~/Views/Login/Login.cshtml");
         }
     }
 }
