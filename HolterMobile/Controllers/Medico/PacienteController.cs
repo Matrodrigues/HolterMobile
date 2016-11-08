@@ -108,6 +108,16 @@ namespace HolterMobile.Controllers.Medico
             return View("~/Views/Medico/Paciente/Relatorio.cshtml", vm);
         }
 
+        [HttpPost]
+        public ActionResult Relatorio(RelatorioVM vm)
+        {
+            PacienteFacade f = new PacienteFacade();
+
+            vm = f.CarregaRelatorioDetalhado(vm);
+
+            return View("~/Views/Medico/Paciente/Detalhe.cshtml", vm);
+        }
+
         [HttpGet]
         public ActionResult Localizacao(int idPaciente)
         {

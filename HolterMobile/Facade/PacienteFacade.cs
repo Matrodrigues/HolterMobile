@@ -240,5 +240,16 @@ namespace HolterMobile.Facade
 
             return vm;
         }
+
+        public RelatorioVM CarregaRelatorioDetalhado(RelatorioVM vm)
+        {
+            MonitoramentoDao dao = new MonitoramentoDao();
+
+            List<Monitoramento> medicoes = dao.PegarBatimentos(vm.idPaciente, vm.dataInicial, vm.dataFinal);
+
+            vm.listaMedidas = medicoes;
+
+            return vm;
+        }
     }
 }

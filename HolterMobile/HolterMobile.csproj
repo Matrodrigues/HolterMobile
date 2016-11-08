@@ -718,6 +718,7 @@
     <Content Include="Views\Shared\Admin\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Admin\_Menus.cshtml" />
     <Content Include="Views\Admin\Alterar.cshtml" />
+    <Content Include="Views\Medico\Paciente\Detalhe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
