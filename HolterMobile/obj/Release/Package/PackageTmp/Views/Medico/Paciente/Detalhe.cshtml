@@ -1,0 +1,54 @@
+﻿@model HolterMobile.Models.ViewModel.RelatorioVM
+@{
+    ViewBag.Title = "Detalhe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="title-left">
+    <a href="#">Relatório</a>
+    <i class="fa fa-angle-double-right"></i>
+    <a href="perfil.html">Detalhe</a>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Relatório Detalhado</h2>
+                <ul class="nav navbar-right panel_toolbox" style="min-width:24px;">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                Dados exibidos entre @Model.dataInicial e @Model.dataFinal
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Atividade</th>
+                            <th>Batimento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var u in Model.listaMedidas)
+                        {
+                            <tr>
+                                <th scope="row">@u.horario</th>
+                                <td>@u.ds_atividade</td>
+                                <td>@u.bpm</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" onclick="location.href='@Url.Action("Relatorio/" + Model.idPaciente, "Paciente")'" class="btn btn-primary">Voltar</button>
+        </div>
+    </div>
+</div>
+
+
+

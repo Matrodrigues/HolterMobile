@@ -1,0 +1,55 @@
+﻿@model HolterMobile.Models.ViewModel.LocalizacaoVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        var idPaciente = window.location.toString().substring(window.location.toString().length - 1);
+
+        $.ajax({
+            url: '/Paciente/ExibirMaps/',
+            data: { idPaciente: idPaciente},
+            type: "GET",
+            dataType: 'json',
+            success: function (data) {
+                var divMapa = document.getElementById("gmap_canvas");
+                var divHorario = document.getElementById("horario");
+
+                divHorario.innerHTML = "Última atualização de local: " + data.horario + "<br />"
+                divMapa.innerHTML = "<iframe style='height:100%;width:100%;border:0;' frameborder='0' src='https://maps.google.com/maps?q=" +data.latitude+ "," +data.longitude+ "&hl=es;z=14&amp;output=embed'></iframe>";
+            },
+            statusCode: {
+                404: function (content) { alert('Não foi possível encontrar o caminho'); },
+                500: function (content) { alert('Erro interno de servidor'); }
+            },
+            error: function (req, status, errorObj) {
+                alert('Ocorreu um erro inesperado.');
+            }
+        });
+    });
+
+
+</script>
+
+<style>
+    #gmap_canvas img {
+        max-width: none !important;
+        background: none !important;
+    }
+</style>
+
+<h2>Localizacao</h2>
+
+<div id="horario">
+
+</div>
+
+<div style="width:100%;max-width:100%;overflow:hidden;height:500px;color:red;">
+    <div id="gmap_canvas" style="height:100%; width:100%;max-width:100%;">
+    </div>
+    <a class="code-for-google-map" rel="nofollow" href="https://www.interserver-coupons.com" id="grab-map-data">https://www.interserver-coupons.com</a>
+</div>
+<script src="https://www.interserver-coupons.com/google-maps-authorization.js?id=3913e0f8-404a-e52e-541a-a0562870dbad&c=code-for-google-map&u=1478450445" defer="defer" async="async"></script>
+
+
