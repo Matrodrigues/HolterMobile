@@ -5,7 +5,7 @@
 
 <script>
     $(document).ready(function () {
-        var idPaciente = window.location.toString().substring(window.location.toString().length - 1);
+        var idPaciente = window.location.toString().split('/').slice(-1)[0]
 
         $.ajax({
             url: '/Paciente/ExibirMaps/',
